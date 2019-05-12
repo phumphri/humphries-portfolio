@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="svg/xml; charset=windows-1252" />
+    <!-- <link rel="stylesheet" type="text/css" href="static/css/viterbi.css" /> -->
+    <title>CitiBike2</title>
+    <link rel="shortcut icon" href="https://www.usc.edu/favicon.ico" />
+
+    <!-- Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> -->
+    <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+    <!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> -->
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/viterbi.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/transactions12.css') }}" />
+
+    <!-- <script src="{{ url_for('static', filename='js/sample.js') }}"></script> -->
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/age_minutes_by_year_month_day.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/gender_trips_by_year_month_day.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/introduction.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/start_stations.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/stop_stations.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/trips_by_year_month.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/trips_by_year_season_hour.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/user_types_by_year_month_day.js') }}"></script>
+
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/year_month_bar_chart.js') }}"></script>
+    
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+
+    <script>
+        window.onload = function () 
+        {
+            console.log("WTF?");
+            console.log("{{ url_for('static', filename='js/introduction.js') }}");
+            introduction();
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <div class="container-fluid">
+
+        <div class="row cardinal">
+            <div class="col-lg-2 cardinal project_name">
+                <img src="https://vsoeapp1.vsoe.usc.edu/images/USC-Bar-cardinal.gif"><br />
+            </div>
+            <div class="col-lg-7 cardinal">
+                <center class="project_name">CitiBike2</center>
+            </div>
+            <div class="col-lg-3 cardinal bootcamp_name">
+                <p class="gold">Patrick Humphries, M.B.A.<br />
+                    U.S.C. Graduate Student, Big Data Fundamentals<br />
+                    pvhumphr@usc.edu</p><br />
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-2">
+                <h3>Table of Contents</h3>
+                <button type="button" onclick="introduction();">Introduction</button><br/>
+                <button type="button" onclick="trips_by_year_month()">Trips</button><br/>
+                <button type="button" onclick="user_types_by_year_month_day()">Users</button><br/>
+                <button type="button" onclick="trips_by_year_season_hour()">Peak</button><br/>
+                <button type="button" onclick="start_stations()">Start</button><br/>
+                <button type="button" onclick="stop_stations()">Stop</button><br/>
+                <button type="button" onclick="geneder_trips_by_year_month_day()">Gender</button><br/>
+                <button type="button" onclick="age_minutes_by_year_month_day()">Age</button><br/>
+            </div>
+
+            <div class="col-lg-10">
+                <h3 id="plot_area_heading">Plot Area</h3>
+                <svg class="bar-chart"></svg>
+                <div id="table_area"></div>
+            </div>
+
+        </div>
+    </div>
+
+</html>

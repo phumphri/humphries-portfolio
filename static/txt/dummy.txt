@@ -1,0 +1,5 @@
+Now is the time for all good men to come to the aid of their country.
+An algorithm that can be solved in polynomial time is P.
+An algorithm that cannot be solved in polynomial time but can be verified in polynomial time is NP.
+An algorithm that is harder than all other NP programs is considered NP-Complete.
+Impossible problems are NP-Hard.

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta name="keywords" content="sandbox, humphries">
+    <meta name="Author" content="Patrick Humphries">
+    <meta http-equiv="charset" content="utf-8">
+    <meta http-equiv="content-type" content="text/html">
+
+
+    <!-- Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+    <title>Sandbox 3</title>
+
+    <link href="/static/css/viterbi_3.css" rel="stylesheet" type="text/css" />
+    <link href="/static/css/ads.css" rel="stylesheet" type="text/css" />
+
+
+    <link rel="shortcut icon" href="https://www.usc.edu/favicon.ico" />
+
+</head>
+
+<body>
+
+
+    <div class="container-fluid">
+
+        <div class="row cardinal_background">
+            <div class="col-lg-2 cardinal_background">
+                <img src="https://vsoeapp1.vsoe.usc.edu/images/USC-Bar-cardinal.gif"><br />
+            </div>
+            <div class="col-lg-7 cardinal_background project_name">
+                Sandbox 3
+            </div>
+            <div class="col-lg-3 cardinal_background bootcamp_name">
+                <p class="gold_color">Patrick Humphries, M.B.A.<br />
+                    U.S.C. Graduate Student, Applied Data Science<br />
+                    pvhumphr@usc.edu</p><br />
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <form action="/sandbox_3" method="POST" enctype="multipart/form-data">
+            <div class="row">
+
+                <!-- First and last name input fields -->
+                <fieldset class="padding_5px">
+                    <legend>Personal Data</legend>
+                    <div class="col-lg-2">
+                        <label for="fn01" class="cardinal_background gold_color padding_5px" title="Specification 1.1">First Name</label><br />
+                        <input id="fn01" class="input padding_5px" type="text" name="firstname" value="Patrick" />
+
+                    </div>
+
+                    <div class="col-lg-2">
+                        <label for="ln01" class="cardinal_background gold_color padding_5px" title="Specification 1.2">Family Name</label><br />
+                        <input id="ln01" class="input padding_5px" type="text" name="lastname" value="Humphries" />
+                    </div>
+
+                    <div class="col-lg-2">
+                        <label for="ta01" class="cardinal_background gold_color padding_5px">Address</label><br />
+                        <textarea id="ta01" class="input padding_5px" name="address" cols="40" rows="4" wrap="hard">
+
+                            </textarea>
+                    </div>
+                </fieldset>
+            </div>
+
+            <!-- File Information Section -->
+            <div class="row">
+
+                <!-- Example of a file picker. -->
+                <fieldset class="padding_5px">
+                    <legend>Text File to Load</legend>
+                    <div class="col-lg-2">
+                        <input id="tf01" class="input" type="file" name="textfile" size="50" maxlength="250" accept="text/plain" /><br />
+                </fieldset>
+            </div>
+
+            <!-- Pet Information Section -->
+            <div class="row">
+                <fieldset class="padding_5px">
+                    <legend>Pet Information</legend>
+
+                    <!-- Example of checkboxes. -->
+                    <div class="col-lg-2">
+                        <label class="cardinal_background gold_color padding_5px">Pet Owned</label><br />
+                        <input type="checkbox" name="pet_owned" value="dog" /> Dog <br />
+                        <input type="checkbox" name="pet_owned" value="cat" checked="checked" /> Cat <br />
+                        <input type="checkbox" name="pet_owned" value="bird" /> Bird <br />
+                        <input type="checkbox" name="pet_owned" value="fish" /> Fish
+                    </div>
+
+                    <!-- Example of radio buttons. -->
+                    <div class="col-lg-2">
+                        <label class="cardinal_background gold_color padding_5px">Favorite Pet</label><br />
+                        <input id="fp01" type=radio name="favorite_pet" value="dog" /> Dog <br />
+                        <input id="fp02" type=radio name="favorite_pet" value="cat" checked /> Cat <br />
+                        <input id="fp03" type=radio name="favorite_pet" value="bird" /> Bird <br />
+                        <input id="fp04" type=radio name="favorite_pet" value="fish" /> Fish
+
+                    </div>
+
+                    <!-- Example of a list box. -->
+                    <div class="col-lg-2">
+                        <label class="cardinal_background gold_color padding_5px">Pets of Friends</label><br />
+                        <select id="pf01" class="input" name="pets_possesed" size="3" multiple="multiple">
+                            <option label="Dog">canine</option>
+                            <option label="Cat">feline</option>
+                            <option label="Bird">avian</option>
+                            <option label="Fish">pisces </option>
+                        </select>
+                    </div>
+                </fieldset>
+                <br />
+            </div>
+
+            <!-- Software and Tabular Section -->
+            <div class="row">
+                <fieldset class="padding_5px">
+                    <legend>Software and Tabular Information</legend>
+
+                    <!-- Example of Option Listbox -->
+                    <div class="col-lg-2">
+                        <label class="cardinal_background gold_color padding_5px">Favorite Software</label><br />
+                        <select class="input" name="software">
+                            <optgroup label="Programming Languages">
+                                <option value="C">C</option>
+                                <option value="C++">C++</option>
+                                <option value="Java">Java</option>
+                            </optgroup>
+                            <optgroup label="Scripting Language">
+                                <option value="JavaScript">JavaScript</option>
+                                <option value="python" label="Python">
+                                <option value="Shell">Shell</option>
+                            </optgroup>
+                        </select>
+
+                    </div>
+
+                    <!-- Example of Tabular Dataa -->
+                    <div class="col-lg-3">
+                        <h3>Sample Table</h3>
+                        <h4>Heading, Caption, Bodies, Footers</h4>
+                        <table id="t01">
+                            <caption class="cardinal_background gold_color padding_5px">This is lame!</caption>
+                            <thead>
+                                <tr>
+                                    <th>thead A</th>
+                                    <th>thead B</th>
+                                    <th>thead C</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="zebra">
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr class="zebra">
+                                    <td>4</td>
+                                    <td>5</td>
+                                    <td>6</td>
+                                </tr>
+                                <tr class="zebra">
+                                    <td>7</td>
+                                    <td>8</td>
+                                    <td>9</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr class="zebra">
+                                    <td>10</td>
+                                    <td>11</td>
+                                    <td>12</td>
+                                </tr>
+                                <tr class="zebra">
+                                    <td>13</td>
+                                    <td>14</td>
+                                    <td>15</td>
+                                </tr>
+                                <tr class="zebra">
+                                    <td>16</td>
+                                    <td>17</td>
+                                    <td>18</td>
+                                </tr>
+                            </tbody>
+                            <tfooter>
+                                <tr>
+                                    <th>tfooter A</th>
+                                    <th>tfooter B</th>
+                                    <th>tfooter C</th>
+                                </tr>
+                            </tfooter>
+
+                        </table>
+
+                    </div>
+
+                    <!-- Example of an Ordered List -->
+                    <div class="col-lg-7">
+                        <h3>Applied Data Science (MS)</h3>
+                        <ol>
+                            <li>Graduate Certificate in Big Data Fundamentals</li>
+                            <ol>
+                                <li class="ads inf units_3">551: Introduction to Data Management</li>
+                                <li class="ads inf units_4">510: Principles of Programming for Informatics</li>
+                                <li class="ads inf units_4">549: Introduction to Computational Thinking and Data Science</li>
+                                <li class="ads inf units_4">550: Overview of Data Informatics in Large Data Environments</li>
+                            </ol>
+                            <li>Master of Science in Applied Data Science</li>
+                            <ol>
+                                <li class="ads inf units_4">552: Machine Learning for Data Informatics</li>
+                                <li class="ads inf units_4">553: Foundations and Applications of Data Mining</li>
+                                <li class="ads inf units_4">554: Information Visualization</li>
+                                <li class="ads inf units_4">555: User Interface Design,Implementation, and Testing</li>
+                            </ol>
+                            <li>Electives</li>
+                            <ol>
+                                <li class="ads csci units_4">570: Analysis of Algorithms</li>
+                            </ol>
+                        </ol>
+                    </div>
+                </fieldset>
+                <br />
+            </div>
+
+            <!-- Form Submission Section -->
+            <div class="row">
+                <fieldset class="padding_5px">
+                    <legend>Form Submissions</legend>
+
+                    <!-- Example of an image used as a submit button. -->
+                    <div class="col-lg-2">
+                        <input type="image" src="/static/img/warning.gif" name="image" />
+                    </div>
+
+                    <!-- Submit button for the form. -->
+                    <div class="col-lg-2">
+                        <input class="input" type="submit" value="Do It!" formmethod="POST" name="submit" formaction="sandbox_3" />
+                    </div>
+
+                    <!-- Example of an image. -->
+                    <div class="col-lg-2">
+                        <img src="/static/img/info.gif" alt="info.gif" height="32" width="32" title="standalone image" name="info_gif" />
+                    </div>
+                </fieldset>
+
+            </div>
+            <div class="row">
+                <label class="cardinal_background gold_color padding_5px">Status</label>
+                <label id="st" class="white_background">System ready.</label>
+            </div>
+            <br />
+        </form>
+
+        <!-- Navigation Section -->
+        <div class="row">
+            <fieldset class="padding_5px">
+                <legend>Navigation</legend>
+
+                <!-- Replace current page with a new one. -->
+                <div class="col-lg-2">
+                    <a href="/">Sandbox 3</a>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</body>
+
+</html>

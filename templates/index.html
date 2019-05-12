@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+
+{% block title %}
+Humphries Portfolio
+{% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block body %}
+{{ super() }}
+
+<div class="container-fluid">
+    <div class="row padding_5px">
+        <h2>Portfolio of Applied Data Analytics by Patrick Humphries</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Link</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="padding_5px">
+                        <a href="https://humphries-citibike.herokuapp.com/" target="_blank"><b>CitiBike using Tableau</b></a></td>
+                    <td class="padding_5px text_align_left"><b>This the initial analysis of data for CitiBike of New York City.<br />
+                            Technologies that were utilized:
+                            <ul>
+                                <li>Python: ETL and API</li>
+                                <li>Flask: API</li>
+                                <li>Postgres: Store and Analysis</li>
+                                <li>OData: Open Data Protocol for Data and Metadata</li>
+                                <li>Tableau: Presentation</li>
+                            </ul>
+                        </b></td>
+                </tr>
+                <tr>
+                    <td class="padding_5px"><a href="https://github.com/phumphri/CitiBike/blob/master/Patrick_Humphries_Resume.pdf" target="_blank"><b>Resume</b></a></td>
+                    <td class="padding_5px"><b>Resume downloadable from GitHub.</b></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}{% endblock %}
+
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/viterbi_3.css') }}" />
+{% endblock %}
+
+{% block body %}
+{{ super() }}
+<div class="container-fluid">
+
+    <div class="row cardinal_background">
+        <div class="col-lg-2 cardinal project_name">
+            <img src="https://vsoeapp1.vsoe.usc.edu/images/USC-Bar-cardinal.gif"><br />
+        </div>
+        <div class="col-lg-7 cardinal_background project_name">
+            {{ project_name|title }}<br />
+        </div>
+        <div class="col-lg-3 cardinal_background bootcamp_name">
+            <p class="gold"></p>Patrick Humphries, M.B.A.<br />
+                U.S.C. Graduate Student, Applied Data Science<br />
+                pvhumphr@usc.edu</p><br />
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

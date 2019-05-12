@@ -1,0 +1,57 @@
+@charset "utf-8";
+
+/* Dark Page */
+body {
+  background-color: grey;
+  color: white
+}
+
+.input {background-color: lightgrey;
+color:  black}
+
+/* Table borders of black, blue, and red. */
+table{
+  border: 1px solid white;
+
+}
+
+th {
+  border: 1px solid yellow;
+
+}
+
+td {
+  border: 1px solid red;
+  text-align: center
+}
+
+/* Zebra coding of rows in a table. */
+/* Example of tag#id. */
+table#t01 tr:nth-child(even) {
+  background-color: white;
+  color: black;
+}
+table#t01 tr:nth-child(odd) {
+  background-color: lightgrey;  
+  color:  black
+}
+
+/* The heading with id "t01" is white on black. */
+table#t01 th {
+  color: white;
+  background-color: black;
+}
+
+/* The first two headers are blue in color. */
+h1, h2 {
+    color: yellow; 
+}
+
+
+
+/* Control the colors of the hyperlinks. */
+/* Example of tag.class. */
+a.link {color: white; }
+a.hover {color: yellow; font-weight: bold}
+a.active {color: yellow; font-weight: bold}
+a.visited {color: white}

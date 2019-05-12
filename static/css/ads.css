@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+/* This is the orderlist for Applied Data Science where the course numbers are
+prefixed and the suffix consists of the number of units.  The declination is 
+decimal to lower-case alphabetic.  */
+
+ol li {list-style: decimal}
+ol ol li.ads {list-style: lower-alpha;}
+ol ol li.inf:before {content: "INF "}
+ol ol li.csci:before {content: "CSCI "}
+ol ol li.units_4:after {content: " Units 4"}
+ol ol li.units_3:after {content: " Units 3"}
+

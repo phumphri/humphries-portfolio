@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<!-- These blocks supply strings that replace the corresponding blocks in base.html -->
+{% extends "base.html" %}
+
+<!-- Title -->
+{% block title %}User{% endblock %}
+
+<!-- Head -->
+{% block head %}
+{{ super() }}
+<style>
+</style>
+{% endblock %}
+
+<!-- Body -->
+{% block body %}
+<h1>Hello {{ name|title }}!</h1>
+{% endblock %}
