@@ -1,1 +1,5 @@
+# Context for Visual Studio Code
 .vscode/
+
+# Git Ignore
+.gitignore
