@@ -5,7 +5,10 @@
 
 {% block head %}
 {{ super() }}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/viterbi_3.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/viterbi_3.css', _external=True) }}" />
+<link rel="shortcut icon" href="https://www.usc.edu/favicon.ico" />
+<link rel="favicon" href="https://www.usc.edu/favicon.ico" />
+
 {% endblock %}
 
 {% block body %}
