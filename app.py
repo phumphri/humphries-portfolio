@@ -22,7 +22,9 @@ from flask import (
     redirect)
 from flask_cors import CORS
 from flask_bootstrap import Bootstrap
-
+from werkzeug.exceptions import NotFound, InternalServerError
+from flask_moment import Moment
+import datetime
 
 # Assigning the Flask framework.
 app = Flask(__name__)
@@ -30,7 +32,7 @@ app = Flask(__name__)
 # Index page.
 @app.route("/")
 def home():
-    return render_template("index.html", project_name="Portfolio")
+    return render_template("index.html", project_name="Portfolio", current_time=datetime.datetime.utcnow())
 
 # Input parameter from URL and template returning the parameter.
 @app.route("/user/<string:name>")

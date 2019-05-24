@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block body %}
+{{ super() }}
+<div class="container-fluid">
+    <h3>Sorry, but that page was not found.</h3>
+    <p>Consider just entering the server URL.<br />
+    That should take you to the home page.</p>
+</div>
+{% endblock %}
