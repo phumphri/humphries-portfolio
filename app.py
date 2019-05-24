@@ -34,6 +34,28 @@ app = Flask(__name__)
 def home():
     return render_template("index.html", project_name="Portfolio", current_time=datetime.datetime.utcnow())
 
+@app.errorhandler(404)
+def page_not_found(e):
+    print("type(e):", type(e))
+    return render_template('404.html', 
+        project_name="Oops!", 
+        current_time=datetime.datetime.utcnow()), 404
+
+@app.route("/oops")
+def simulate_page_not_found():
+    raise NotFound()
+ 
+@app.errorhandler(500)
+def internal_server_error(e):
+    return render_template('500.html', 
+        project_name="Bummer!", 
+        current_time=datetime.datetime.utcnow()), 500
+
+@app.route("/bummer")
+def simulate_internal_server_error():
+    raise InternalServerError()
+
+
 # Input parameter from URL and template returning the parameter.
 @app.route("/user/<string:name>")
 def user(name):
