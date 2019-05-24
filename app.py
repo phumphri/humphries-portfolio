@@ -71,7 +71,7 @@ if __name__ == "__main__":
     print("socket.hostname():", hostname)
 
     bootstrap = Bootstrap(app)
-    print("type(bootstrap):", bootstrap)
+    moment = Moment(app)
     
     if (hostname == 'XPS'):
         app.run(debug=True)
