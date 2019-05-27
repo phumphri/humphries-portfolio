@@ -62,7 +62,7 @@ def not_implemented(e):
         current_time=datetime.datetime.utcnow()), 400
 
 @app.route("/not_implemented")
-def simulate_internal_server_error():
+def raise_not_implemented():
     raise  NotImplemented()
 
 
