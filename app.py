@@ -22,7 +22,7 @@ from flask import (
     redirect)
 from flask_cors import CORS
 from flask_bootstrap import Bootstrap
-from werkzeug.exceptions import NotFound, InternalServerError
+from werkzeug.exceptions import NotFound, InternalServerError, NotImplemented
 from flask_moment import Moment
 import datetime
 
@@ -54,6 +54,16 @@ def internal_server_error(e):
 @app.route("/bummer")
 def simulate_internal_server_error():
     raise InternalServerError()
+
+@app.errorhandler(501)
+def not_implemented(e):
+    return render_template('501.html', 
+        project_name="Not Implemented", 
+        current_time=datetime.datetime.utcnow()), 400
+
+@app.route("/not_implemented")
+def simulate_internal_server_error():
+    raise  NotImplemented()
 
 
 # Input parameter from URL and template returning the parameter.
