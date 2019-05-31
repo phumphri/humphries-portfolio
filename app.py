@@ -49,11 +49,13 @@ def simulate_page_not_found():
 def internal_server_error(e):
     return render_template('500.html', 
         project_name="Bummer!", 
+        message_from_the_application = e,
         current_time=datetime.datetime.utcnow()), 500
 
 @app.route("/bummer")
 def simulate_internal_server_error():
-    raise InternalServerError()
+    message_from_the_application = 'Relax.  This was only a test.'
+    raise InternalServerError(message_from_the_application)
 
 @app.errorhandler(501)
 def not_implemented(e):
