@@ -9,8 +9,16 @@
 {% block body %}
 {{ super() }}
 <div class="container-fluid">
-    <h3>Sorry, but that page was not found.</h3>
-    <p>Consider just entering the server URL.<br />
-    That should take you to the home page.</p>
+    <h3>Sorry.  That page or file could not be found.</h3>
+    <fieldset>
+        <legend>Instructions</legend>
+        <p>Consider just entering the server URL.<br />
+            That should take you to the home page.</p>
+        <p>Or, you could start over at <a href="http://viterbi.cloud">viterbi.cloud</a></p>
+    </fieldset>
+    <fieldset>
+        <legend>Message from the Application</legend>
+        <em>{{ message_from_the_application }}</em>
+    </fieldset>
 </div>
 {% endblock %}

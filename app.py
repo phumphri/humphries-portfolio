@@ -39,11 +39,13 @@ def page_not_found(e):
     print("type(e):", type(e))
     return render_template('404.html', 
         project_name="Oops!", 
+        message_from_the_application = e,
         current_time=datetime.datetime.utcnow()), 404
 
 @app.route("/oops")
 def simulate_page_not_found():
-    raise NotFound()
+    message_from_the_application = 'Relax.  This was only a test.'
+    raise NotFound(message_from_the_application)
  
 @app.errorhandler(500)
 def internal_server_error(e):
