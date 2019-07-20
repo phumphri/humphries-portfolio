@@ -29,6 +29,21 @@ import datetime
 # Assigning the Flask framework.
 app = Flask(__name__)
 
+# quickstart
+@app.route('/quickstart', methods=['GET'])
+def quickstart():
+
+    return render_template('quickstart.html'), 200
+
+# South America Energy
+@app.route('/sae', methods=['GET'])
+def sae():
+
+    return render_template('sae.html', 
+        project_name="South America Energy", 
+        message_from_the_application = 'Step One.',
+        current_time=datetime.datetime.utcnow()), 200
+
 # Index page.
 @app.route("/")
 def home():
