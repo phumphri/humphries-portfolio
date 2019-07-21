@@ -33,15 +33,14 @@ function draw_per_capita_by_year(selected_year_paramenter) {
       ta03.innerHTML = 'Venezuela significantly falters whereas Chile and Argentina become dominant.'
       break
   }
+
   console.log('selected_year:' + selected_year)
-  url = 'https://docs.google.com/spreadsheets/d/1CeiVB_u3H8lGjD9KlxkKzsdhivRMPKF0D8XT2qAzt0Y/edit?usp=sharing'
-  // url = 'https://docs.google.com/spreadsheets/d/1MOXKOGDX7NK4qpNeETDtucsPJU02orIjcIfrA0OJsHY/edit?usp=sharing'
 
-  queryString = encodeURIComponent('SELECT A, B, C   where D = ' + selected_year)
-
+  var url = 'https://docs.google.com/spreadsheets/d/1CeiVB_u3H8lGjD9KlxkKzsdhivRMPKF0D8XT2qAzt0Y/edit?usp=sharing'
+  
+  var queryString = encodeURIComponent('SELECT A, B, C   where D = ' + selected_year)
 
   query = new google.visualization.Query(url + '&gid=923832174&headers=1&tq=' + queryString)
-
 
   query.send(handle_per_capita_by_year);
 }
@@ -52,20 +51,19 @@ function handle_per_capita_by_year(response) {
     return
   }
 
-
   // The third column of the DataTable will have values for tooltips.
   // This requires unloading the current DataTable and building a new DataTable.
   // The "role" of the third column is "tooltip" of the new DataTable.
 
-  dataTable = response.getDataTable()
+  var dataTable = response.getDataTable()
 
-  numberOfRows = dataTable.getNumberOfRows()
+  var numberOfRows = dataTable.getNumberOfRows()
   console.log('Number of rows:  ' + numberOfRows)
 
-  numberOfColumns = dataTable.getNumberOfColumns()
+  var numberOfColumns = dataTable.getNumberOfColumns()
   console.log('Number of columns:  ' + numberOfColumns)
 
-  newDataTable = new google.visualization.DataTable()
+  var newDataTable = new google.visualization.DataTable()
   newDataTable.addColumn('number', 'Total')
   newDataTable.addColumn('number', 'Per Capita')
   newDataTable.addColumn({type: 'string', role: 'tooltip'})
@@ -74,12 +72,12 @@ function handle_per_capita_by_year(response) {
   for (i = 0; i < numberOfRows; i++){
     console.log(dataTable.getValue(i,0) + ', ' + dataTable.getValue(i,1) + ', ' + dataTable.getValue(i,2))
 
-    tooltip = dataTable.getValue(i,2) + ': ' + dataTable.getValue(i,0) + ', ' + dataTable.getValue(i,1)
+    var tooltip = dataTable.getValue(i,2) + ': ' + dataTable.getValue(i,0) + ', ' + dataTable.getValue(i,1)
 
     newDataTable.addRow([dataTable.getValue(i,0), dataTable.getValue(i,1), tooltip, dataTable.getValue(i,2)])
   }
 
-  options = {
+  var options = {
     height: 600,
     title: 'Supply per capita (gigajoules) over Total supply (petajoules) for Year ' + selected_year,
     legend: 'none',
@@ -88,7 +86,7 @@ function handle_per_capita_by_year(response) {
     trendlines: {0: {} }
     }
   
-  chart = new google.visualization.ScatterChart(document.getElementById('per_capita_by_year_div'))
+  var chart = new google.visualization.ScatterChart(document.getElementById('per_capita_by_year_div'))
   
   chart.draw(newDataTable, options)
 }

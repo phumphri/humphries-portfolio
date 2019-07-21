@@ -61,14 +61,14 @@ function draw_country_by_series_over_year(country) {
       ta02.innerHTML = 'Venezuela has decreasing production that has resulted in decreasing exports.'
       break
   }
+
   console.log('country_name:' + country_name)
-  url = 'https://docs.google.com/spreadsheets/d/1CeiVB_u3H8lGjD9KlxkKzsdhivRMPKF0D8XT2qAzt0Y/edit?usp=sharing'
-  // url = 'https://docs.google.com/spreadsheets/d/1MOXKOGDX7NK4qpNeETDtucsPJU02orIjcIfrA0OJsHY/edit?usp=sharing'
 
-  queryString = encodeURIComponent('SELECT A, sum(D) where (B = "' + country_name + '")  and (C<>"Supply per capita (gigajoules)") group by A pivot C')
+  var url = 'https://docs.google.com/spreadsheets/d/1CeiVB_u3H8lGjD9KlxkKzsdhivRMPKF0D8XT2qAzt0Y/edit?usp=sharing'
+  
+  var queryString = encodeURIComponent('SELECT A, sum(D) where (B = "' + country_name + '")  and (C<>"Supply per capita (gigajoules)") group by A pivot C')
 
-
-  query = new google.visualization.Query(url + '&gid=703773082&headers=1&tq=' + queryString)
+  var query = new google.visualization.Query(url + '&gid=703773082&headers=1&tq=' + queryString)
 
   query.send(handle_country_by_series_over_year);
 }
@@ -79,13 +79,13 @@ function handle_country_by_series_over_year(response) {
     return
   }
 
-  options = {
+  var options = {
     height: 600,
     title: country_name + ' by Series over Year',
     hAxis: { format: '####' }
   }
 
-  data = response.getDataTable()
-  chart = new google.visualization.LineChart(document.getElementById('country_by_series_over_year_div'))
+  var data = response.getDataTable()
+  var chart = new google.visualization.LineChart(document.getElementById('country_by_series_over_year_div'))
   chart.draw(data, options);
 }

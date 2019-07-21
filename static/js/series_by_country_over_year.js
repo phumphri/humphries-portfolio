@@ -29,16 +29,16 @@ function draw_series_by_country_over_year(series) {
       ta01.innerHTML = 'Despite being the top producer, Brazil is middle in per capita.  Chile and Argentina are trending higher.'
       break
   }
+
   console.log('series_name:' + series_name)
-  url = 'https://docs.google.com/spreadsheets/d/1CeiVB_u3H8lGjD9KlxkKzsdhivRMPKF0D8XT2qAzt0Y/edit?usp=sharing'
-  // url = 'https://docs.google.com/spreadsheets/d/1MOXKOGDX7NK4qpNeETDtucsPJU02orIjcIfrA0OJsHY/edit?usp=sharing'
 
-  queryString = encodeURIComponent('SELECT A, sum(D) where (C = "' + series_name + '") and (B<>"South America") group by A pivot B')
+  var url = 'https://docs.google.com/spreadsheets/d/1CeiVB_u3H8lGjD9KlxkKzsdhivRMPKF0D8XT2qAzt0Y/edit?usp=sharing'
+  
+  var queryString = encodeURIComponent('SELECT A, sum(D) where (C = "' + series_name + '") and (B<>"South America") group by A pivot B')
 
+  var query = new google.visualization.Query(url + '&gid=703773082&headers=1&tq=' + queryString)
 
-  query = new google.visualization.Query(url + '&gid=703773082&headers=1&tq=' + queryString)
-
-  query.send(handle_series_by_country_over_year);
+  query.send(handle_series_by_country_over_year)
 }
 
 function handle_series_by_country_over_year(response) {
@@ -47,13 +47,13 @@ function handle_series_by_country_over_year(response) {
     return
   }
 
-  options = {
+  var options = {
     height: 600,
     title: series_name + ' by Country over Year',
     hAxis: {format:'####'}
   }
 
-  data = response.getDataTable()
-  chart = new google.visualization.LineChart(document.getElementById('series_by_country_over_year_div'))
+  var data = response.getDataTable()
+  var chart = new google.visualization.LineChart(document.getElementById('series_by_country_over_year_div'))
   chart.draw(data, options);
 }
