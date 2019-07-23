@@ -4,22 +4,23 @@
 
 {% block head %}
 {{ super() }}
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="keywords" content="sandbox, humphries">
 <meta name="Author" content="Patrick Humphries">
 <meta http-equiv="charset" content="utf-8">
 <meta http-equiv="content-type" content="text/html">
 
 <!-- Bootstrap -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 
 
 <!-- South America Energy data from Google Sheets -->
 <script type="text/javascript" src="{{ url_for('static', filename='js/series_by_country_over_year.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/country_by_series_over_year.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/per_capita_by_year.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/sae_hidden_or_visible.js') }}"></script>
 
 <!-- Google Libraries -->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -35,9 +36,31 @@
 {% block body %}
 {{ super() }}
 <div class="container-fluid">
-    <div class="row">
 
-        <div class="col-lg-1"></div>
+    <!-- Hide or unhide rows. -->
+    <div class=row>
+        <div class="btn-group btn-group-lg">
+            <button type="button" class="btn btn-primary cardinal_background gold_color" onclick="sae_hidden_or_visible('assignment')">
+                Assignment
+            </button>
+            <button type="button" class="btn btn-primary cardinal_background gold_color" onclick="sae_hidden_or_visible('series')">
+                Series
+            </button>
+            <button type="button" class="btn btn-primary cardinal_background gold_color" onclick="sae_hidden_or_visible('country')">
+                Country
+            </button>
+            <button type="button" class="btn btn-primary cardinal_background gold_color" onclick="sae_hidden_or_visible('percapita')">
+                Per Capita
+            </button>
+            <button type="button" class="btn btn-primary cardinal_background gold_color" onclick="sae_hidden_or_visible('all')">
+                All
+            </button>
+        </div>
+    </div>
+
+
+    <!-- This row displays assignment, approach, provenance, and links to code. -->
+    <div id="assignment" class="row">
         <div class="col-lg-3">
             <fieldset>
                 <legend>Assignment</legend>
@@ -58,99 +81,108 @@
             </fieldset>
         </div>
         <div class="col-lg-3">
-                <fieldset>
-                    <legend>Provenance</legend>
-                    <p>File "SYB62_T23_201904_Production, Trade and Supply of Energy" was downloaded from http://data.un.org.</p>
-                    <p>Using the QUERY function of Google Sheets, data was selected and organized into tables.</p>
-                    <p>The <i>values</i> of these tables were copied to a new Google Sheet.  This Google sheet was used as the source for the following charts.</p>
-                    <p>This Google Sheet was published to the web with View authority granted to Public.</p>
-                </fieldset>
-            </div>
+            <fieldset>
+                <legend>Provenance</legend>
+                <p>File "SYB62_T23_201904_Production, Trade and Supply of Energy" was downloaded from http://data.un.org.</p>
+                <p>Using the QUERY function of Google Sheets, data was selected and organized into tables.</p>
+                <p>The <i>values</i> of these tables were copied to a new Google Sheet. This Google sheet was used as the source for the following charts.</p>
+                <p>This Google Sheet was published to the web with View authority granted to Public.</p>
+            </fieldset>
+        </div>
+        <div class="col-lg-3">
+            <fieldset>
+                <legend>Code</legend>
+                <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/blob/master/templates/sae.html">sae.html</a></p>
+                <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/blob/master/static/js/series_by_country_over_year.js">series_by_country_over_year.js</a></p>
+                <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/blob/master/static/js/country_by_series_over_year.js">country_by_series_over_year.js</a></p>
+                <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/blob/master/static/js/per_capita_by_year.js">per_capita_by_year.js</a></p>
+                <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/blob/master/static/js/sae_hidden_or_visible.js">sae_hidden_or_visible.js</a></p>
+            </fieldset>
+        </div>
+    </div>
+
+    <!-- This row shows series by country over time. -->
+    <div id="series" class="row">
+
+
+        <div class="col-lg-1"></div>
+
+        <div class="col-lg-2">
+            <fieldset class="padding_5px">
+                <legend>Series</legend>
+                <label>Select Series</label> <br />
+                <input type=radio name="selected_series" onclick="draw_series_by_country_over_year('P')" checked /> Primary energy production (petajoules) <br />
+                <input type=radio name="selected_series" onclick="draw_series_by_country_over_year('N')" /> Net imports [Imports - Exports - Bunkers] (petajoules) <br />
+                <input type=radio name="selected_series" onclick="draw_series_by_country_over_year('C')" /> Changes in stocks (petajoules) <br />
+                <input type=radio name="selected_series" onclick="draw_series_by_country_over_year('T')" /> Total supply (petajoules) <br />
+                <input type=radio name="selected_series" onclick="draw_series_by_country_over_year('S')" /> Supply per capita (gigajoules) <br /> <br />
+                <label>Analysis</label> <br />
+                <textarea id="ta01" class="form-control" rows="8" readonly></textarea>
+            </fieldset>
+        </div>
+        <div class="col-lg-8">
+            <div id='series_by_country_over_year_div'></div>
         </div>
 
+    </div>
 
-    <div class="row">
 
-        <!-- Series by Country and Year -->
-        <div class="row">
+    <!-- This row show country by energy footprint over time -->
+    <div id="country" class="row">
 
-            <div class="col-lg-1"></div>
+        <div class="col-lg-1"></div>
 
-            <div class="col-lg-2">
-                <fieldset class="padding_5px">
-                    <legend>Series</legend>
-                    <label>Select Series</label> <br />
-                    <input type=radio name="selected_series" onclick="draw_series_by_country_over_year('P')" checked /> Primary energy production (petajoules) <br />
-                    <input type=radio name="selected_series" onclick="draw_series_by_country_over_year('N')" /> Net imports [Imports - Exports - Bunkers] (petajoules) <br />
-                    <input type=radio name="selected_series" onclick="draw_series_by_country_over_year('C')" /> Changes in stocks (petajoules) <br />
-                    <input type=radio name="selected_series" onclick="draw_series_by_country_over_year('T')" /> Total supply (petajoules) <br />
-                    <input type=radio name="selected_series" onclick="draw_series_by_country_over_year('S')" /> Supply per capita (gigajoules) <br /> <br />
-                    <label>Analysis</label> <br />
-                    <textarea id="ta01" rows="8" cols="30" readonly></textarea>
-                </fieldset>
-            </div>
-            <div class="col-lg-8">
-                <div id='series_by_country_over_year_div'></div>
-            </div>
+        <div class="col-lg-2">
+            <fieldset class="padding_5px">
+                <legend>Country</legend>
+                <label>Select Country</label> <br />
+                <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('SA')" /> South America <br />
+                <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('AR')" /> Argentina <br />
+                <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('BO')" /> Bolivia (Plurin. State of) <br />
+                <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('BR')" /> Brazil <br />
+                <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('CH')" /> Chile <br />
+                <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('CO')" /> Colombia <br />
+                <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('EC')" /> Ecuador <br />
+                <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('GU')" /> Guyana <br />
+                <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('PA')" /> Paraguay <br />
+                <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('PE')" /> Peru <br />
+                <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('SU')" /> Suriname <br />
+                <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('UR')" /> Uruguay <br />
+                <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('VE')" /> Venezuela (Boliv. Rep. of) <br /> <br />
+                <label>Analysis</label> <br />
+                <textarea id="ta02" class="form-control" rows="8" readonly>To begin, select a country.</textarea>
+            </fieldset>
+        </div>
+        <div class="col-lg-8">
+            <div id='country_by_series_over_year_div'></div>
+        </div>
+    </div>
 
+    <!-- This row show Per Capita energy by country over production for a year.  -->
+    <div id="percapita" class="row">
+
+        <div class="col-lg-1"></div>
+
+        <div class="col-lg-2">
+            <fieldset class="padding_5px">
+                <legend>Year</legend>
+                <label>Select Year</label> <br />
+                <input type=radio name="selected_country" onclick="draw_per_capita_by_year(1990)" /> 1990 <br />
+                <input type=radio name="selected_country" onclick="draw_per_capita_by_year(1995)" /> 1995 <br />
+                <input type=radio name="selected_country" onclick="draw_per_capita_by_year(2000)" /> 2000 <br />
+                <input type=radio name="selected_country" onclick="draw_per_capita_by_year(2005)" /> 2005 <br />
+                <input type=radio name="selected_country" onclick="draw_per_capita_by_year(2010)" /> 2010 <br />
+                <input type=radio name="selected_country" onclick="draw_per_capita_by_year(2014)" /> 2014 <br />
+                <input type=radio name="selected_country" onclick="draw_per_capita_by_year(2015)" /> 2015 <br />
+                <input type=radio name="selected_country" onclick="draw_per_capita_by_year(2016)" /> 2016 <br />
+                <label>Analysis</label> <br />
+                <textarea id="ta03" class="form-control" rows="8" readonly>To begin, select a year.</textarea>
+            </fieldset>
+        </div>
+        <div class="col-lg-8">
+            <div id='per_capita_by_year_div'></div>
         </div>
 
-        <!-- Country by  Series and Year -->
-        <div class="row">
+    </div>
 
-            <div class="col-lg-1"></div>
-
-            <div class="col-lg-2">
-                <fieldset class="padding_5px">
-                    <legend>Country</legend>
-                    <label>Select Country</label> <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('SA')" /> South America <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('AR')" /> Argentina <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('BO')" /> Bolivia (Plurin. State of) <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('BR')" /> Brazil <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('CH')" /> Chile <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('CO')" /> Colombia <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('EC')" /> Ecuador <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('GU')" /> Guyana <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('PA')" /> Paraguay <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('PE')" /> Peru <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('SU')" /> Suriname <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('UR')" /> Uruguay <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('VE')" /> Venezuela (Boliv. Rep. of) <br /> <br />
-                    <label>Analysis</label> <br />
-                    <textarea id="ta02" rows="8" cols="30" readonly>To begin, select a country.</textarea>
-                </fieldset>
-            </div>
-            <div class="col-lg-8">
-                <div id='country_by_series_over_year_div'></div>
-            </div>
-        </div>
-
-        <!-- Per Capita by Year -->
-        <div class="row">
-
-            <div class="col-lg-1"></div>
-
-            <div class="col-lg-2">
-                <fieldset class="padding_5px">
-                    <legend>Year</legend>
-                    <label>Select Year</label> <br />
-                    <input type=radio name="selected_country" onclick="draw_per_capita_by_year(1990)" /> 1990 <br />
-                    <input type=radio name="selected_country" onclick="draw_per_capita_by_year(1995)" /> 1995 <br />
-                    <input type=radio name="selected_country" onclick="draw_per_capita_by_year(2000)" /> 2000 <br />
-                    <input type=radio name="selected_country" onclick="draw_per_capita_by_year(2005)" /> 2005 <br />
-                    <input type=radio name="selected_country" onclick="draw_per_capita_by_year(2010)" /> 2010 <br />
-                    <input type=radio name="selected_country" onclick="draw_per_capita_by_year(2014)" /> 2014 <br />
-                    <input type=radio name="selected_country" onclick="draw_per_capita_by_year(2015)" /> 2015 <br />
-                    <input type=radio name="selected_country" onclick="draw_per_capita_by_year(2016)" /> 2016 <br />
-                    <label>Analysis</label> <br />
-                    <textarea id="ta03" rows="8" cols="30" readonly>To begin, select a year.</textarea>
-                </fieldset>
-            </div>
-            <div class="col-lg-8">
-                <div id='per_capita_by_year_div'></div>
-            </div>
-
-        </div>
-
-        {% endblock %}
+    {% endblock %}

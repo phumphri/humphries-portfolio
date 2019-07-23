@@ -1,13 +1,10 @@
 
 # Upgrade libraries.
-# import os
-# os.system("python -m pip install --upgrade pip")
-# os.system("python -m pip install --upgrade flask")
-# os.system("python -m pip install --upgrade flask_cors")
-
-
-# os.system("pip install flask")
-# os.system("pip install flask_cors")
+import os
+if True:
+    os.system("python -m pip install --upgrade pip")
+    os.system("python -m pip install --upgrade flask")
+    os.system("python -m pip install --upgrade flask_cors")
 
 # from requests.models import Response
 import flask
