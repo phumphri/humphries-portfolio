@@ -4,6 +4,7 @@ function sae_hidden_or_visible(row_id) {
     var assignment = document.getElementById("assignment")
 
     var series = document.getElementById("series")
+    var footprint = document.getElementById("footprint")
     var country = document.getElementById("country")
     var percapita = document.getElementById("percapita")
 
@@ -11,6 +12,7 @@ function sae_hidden_or_visible(row_id) {
     assignment.className = "row hidden"
     series.className = "row hidden"
     country.className = "row hidden"
+    footprint.className = "row hidden"
     percapita.className = "row hidden"
 
     // Unhide the selected row.
@@ -24,6 +26,11 @@ function sae_hidden_or_visible(row_id) {
             console.log("series")
             console.log(series)
             series.className = "row visible"
+            break
+        case "footprint":
+            console.log("footprint")
+            console.log(footprint)
+            footprint.className = "row visible"
             break
         case "country":
             console.log("country")
@@ -39,6 +46,7 @@ function sae_hidden_or_visible(row_id) {
             console.log("default")
             assignment.className = "row visible"
             series.className = "row visible"
+            footprint.className = "row visible"
             country.className = "row visible"
             percapita.className = "row visible"
             break
