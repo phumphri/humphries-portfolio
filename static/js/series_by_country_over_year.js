@@ -1,13 +1,15 @@
 
 function draw_series_by_country_over_year(series) {
 
-  console.log('function series_by_country_and_year.drawChar(' + series + ') was called.')
+  selected_series = 'P'
 
-  series_name = 'Primary energy production (petajoules)'
+  if (typeof(series) != "undefined") {
+    selected_series = series
+  }
 
-  ta01.innerHTML = 'Brazil and Columbia trending up significantly.  Decrease for Venezuela.'
+  console.log('function series_by_country_and_year.drawChar(' + selected_series + ') was called.')
 
-  switch (series) {
+  switch (selected_series) {
     case 'P':
       series_name = 'Primary energy production (petajoules)'
       ta01.innerHTML = 'Brazil and Columbia trending up significantly.  Decrease for Venezuela.'
@@ -29,8 +31,6 @@ function draw_series_by_country_over_year(series) {
       ta01.innerHTML = 'Despite being the top producer, Brazil is middle in per capita.  Chile and Argentina are trending higher.'
       break
   }
-
-  console.log('series_name:' + series_name)
 
   var url = 'https://docs.google.com/spreadsheets/d/1CeiVB_u3H8lGjD9KlxkKzsdhivRMPKF0D8XT2qAzt0Y/edit?usp=sharing'
   

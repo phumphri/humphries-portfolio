@@ -28,6 +28,9 @@
 <script type="text/javascript">
     google.charts.load('current', { packages: ['corechart'] });
     google.charts.setOnLoadCallback(draw_series_by_country_over_year);
+    google.charts.setOnLoadCallback(draw_country_footprint_over_year);
+    google.charts.setOnLoadCallback(draw_country_by_series_over_year);
+    google.charts.setOnLoadCallback(draw_per_capita_by_year);
 </script>
 
 
@@ -116,11 +119,11 @@
             <fieldset class="padding_5px">
                 <legend>Series</legend>
                 <label>Select Series</label> <br />
-                <input type=radio name="selected_series" onclick="draw_series_by_country_over_year('P')" checked /> Primary energy production (petajoules) <br />
-                <input type=radio name="selected_series" onclick="draw_series_by_country_over_year('N')" /> Net imports [Imports - Exports - Bunkers] (petajoules) <br />
-                <input type=radio name="selected_series" onclick="draw_series_by_country_over_year('C')" /> Changes in stocks (petajoules) <br />
-                <input type=radio name="selected_series" onclick="draw_series_by_country_over_year('T')" /> Total supply (petajoules) <br />
-                <input type=radio name="selected_series" onclick="draw_series_by_country_over_year('S')" /> Supply per capita (gigajoules) <br /> <br />
+                <input type=radio name="rb01" onclick="draw_series_by_country_over_year('P')" checked /> Primary energy production (petajoules) <br />
+                <input type=radio name="rb01" onclick="draw_series_by_country_over_year('N')" /> Net imports [Imports - Exports - Bunkers] (petajoules) <br />
+                <input type=radio name="rb01" onclick="draw_series_by_country_over_year('C')" /> Changes in stocks (petajoules) <br />
+                <input type=radio name="rb01" onclick="draw_series_by_country_over_year('T')" /> Total supply (petajoules) <br />
+                <input type=radio name="rb01" onclick="draw_series_by_country_over_year('S')" /> Supply per capita (gigajoules) <br /> <br />
                 <label>Analysis</label> <br />
                 <textarea id="ta01" class="form-control" rows="8" readonly></textarea>
             </fieldset>
@@ -141,19 +144,19 @@
                 <fieldset class="padding_5px">
                     <legend>Footprint</legend>
                     <label>Select Country</label> <br />
-                    <input type=radio name="selected_country" onclick="draw_country_footprint_over_year('SA')" /> South America <br />
-                    <input type=radio name="selected_country" onclick="draw_country_footprint_over_year('AR')" /> Argentina <br />
-                    <input type=radio name="selected_country" onclick="draw_country_footprint_over_year('BO')" /> Bolivia (Plurin. State of) <br />
-                    <input type=radio name="selected_country" onclick="draw_country_footprint_over_year('BR')" /> Brazil <br />
-                    <input type=radio name="selected_country" onclick="draw_country_footprint_over_year('CH')" /> Chile <br />
-                    <input type=radio name="selected_country" onclick="draw_country_footprint_over_year('CO')" /> Colombia <br />
-                    <input type=radio name="selected_country" onclick="draw_country_footprint_over_year('EC')" /> Ecuador <br />
-                    <input type=radio name="selected_country" onclick="draw_country_footprint_over_year('GU')" /> Guyana <br />
-                    <input type=radio name="selected_country" onclick="draw_country_footprint_over_year('PA')" /> Paraguay <br />
-                    <input type=radio name="selected_country" onclick="draw_country_footprint_over_year('PE')" /> Peru <br />
-                    <input type=radio name="selected_country" onclick="draw_country_footprint_over_year('SU')" /> Suriname <br />
-                    <input type=radio name="selected_country" onclick="draw_country_footprint_over_year('UR')" /> Uruguay <br />
-                    <input type=radio name="selected_country" onclick="draw_country_footprint_over_year('VE')" /> Venezuela (Boliv. Rep. of) <br /> <br />
+                    <input type=radio name="rb02" onclick="draw_country_footprint_over_year('AR')" checked /> Argentina <br />
+                    <input type=radio name="rb02" onclick="draw_country_footprint_over_year('BO')" /> Bolivia (Plurin. State of) <br />
+                    <input type=radio name="rb02" onclick="draw_country_footprint_over_year('BR')" /> Brazil <br />
+                    <input type=radio name="rb02" onclick="draw_country_footprint_over_year('CH')" /> Chile <br />
+                    <input type=radio name="rb02" onclick="draw_country_footprint_over_year('CO')" /> Colombia <br />
+                    <input type=radio name="rb02" onclick="draw_country_footprint_over_year('EC')" /> Ecuador <br />
+                    <input type=radio name="rb02" onclick="draw_country_footprint_over_year('GU')" /> Guyana <br />
+                    <input type=radio name="rb02" onclick="draw_country_footprint_over_year('PA')" /> Paraguay <br />
+                    <input type=radio name="rb02" onclick="draw_country_footprint_over_year('PE')" /> Peru <br />
+                    <input type=radio name="rb02" onclick="draw_country_footprint_over_year('SU')" /> Suriname <br />
+                    <input type=radio name="rb02" onclick="draw_country_footprint_over_year('UR')" /> Uruguay <br />
+                    <input type=radio name="rb02" onclick="draw_country_footprint_over_year('VE')" /> Venezuela (Boliv. Rep. of) <br /> 
+                    <input type=radio name="rb02" onclick="draw_country_footprint_over_year('SA')" /> South America <br /> <br />
                     <label>Analysis</label> <br />
                     <textarea id="ta04" class="form-control" rows="8" readonly>To begin, select a country.</textarea>
                 </fieldset>
@@ -172,19 +175,19 @@
                 <fieldset class="padding_5px">
                     <legend>Country</legend>
                     <label>Select Country</label> <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('SA')" /> South America <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('AR')" /> Argentina <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('BO')" /> Bolivia (Plurin. State of) <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('BR')" /> Brazil <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('CH')" /> Chile <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('CO')" /> Colombia <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('EC')" /> Ecuador <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('GU')" /> Guyana <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('PA')" /> Paraguay <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('PE')" /> Peru <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('SU')" /> Suriname <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('UR')" /> Uruguay <br />
-                    <input type=radio name="selected_country" onclick="draw_country_by_series_over_year('VE')" /> Venezuela (Boliv. Rep. of) <br /> <br />
+                    <input type=radio name="rb03" onclick="draw_country_by_series_over_year('AR')" checked /> Argentina <br />
+                    <input type=radio name="rb03" onclick="draw_country_by_series_over_year('BO')" /> Bolivia (Plurin. State of) <br />
+                    <input type=radio name="rb03" onclick="draw_country_by_series_over_year('BR')" /> Brazil <br />
+                    <input type=radio name="rb03" onclick="draw_country_by_series_over_year('CH')" /> Chile <br />
+                    <input type=radio name="rb03" onclick="draw_country_by_series_over_year('CO')" /> Colombia <br />
+                    <input type=radio name="rb03" onclick="draw_country_by_series_over_year('EC')" /> Ecuador <br />
+                    <input type=radio name="rb03" onclick="draw_country_by_series_over_year('GU')" /> Guyana <br />
+                    <input type=radio name="rb03" onclick="draw_country_by_series_over_year('PA')" /> Paraguay <br />
+                    <input type=radio name="rb03" onclick="draw_country_by_series_over_year('PE')" /> Peru <br />
+                    <input type=radio name="rb03" onclick="draw_country_by_series_over_year('SU')" /> Suriname <br />
+                    <input type=radio name="rb03" onclick="draw_country_by_series_over_year('UR')" /> Uruguay <br />
+                    <input type=radio name="rb03" onclick="draw_country_by_series_over_year('VE')" /> Venezuela (Boliv. Rep. of) <br /> 
+                    <input type=radio name="rb03" onclick="draw_country_by_series_over_year('SA')" /> South America <br /><br />
                     <label>Analysis</label> <br />
                     <textarea id="ta02" class="form-control" rows="8" readonly>To begin, select a country.</textarea>
                 </fieldset>
@@ -203,14 +206,14 @@
             <fieldset class="padding_5px">
                 <legend>Year</legend>
                 <label>Select Year</label> <br />
-                <input type=radio name="selected_country" onclick="draw_per_capita_by_year(1990)" /> 1990 <br />
-                <input type=radio name="selected_country" onclick="draw_per_capita_by_year(1995)" /> 1995 <br />
-                <input type=radio name="selected_country" onclick="draw_per_capita_by_year(2000)" /> 2000 <br />
-                <input type=radio name="selected_country" onclick="draw_per_capita_by_year(2005)" /> 2005 <br />
-                <input type=radio name="selected_country" onclick="draw_per_capita_by_year(2010)" /> 2010 <br />
-                <input type=radio name="selected_country" onclick="draw_per_capita_by_year(2014)" /> 2014 <br />
-                <input type=radio name="selected_country" onclick="draw_per_capita_by_year(2015)" /> 2015 <br />
-                <input type=radio name="selected_country" onclick="draw_per_capita_by_year(2016)" /> 2016 <br />
+                <input type=radio name="rb04" onclick="draw_per_capita_by_year(1990)" checked /> 1990 <br />
+                <input type=radio name="rb04" onclick="draw_per_capita_by_year(1995)" /> 1995 <br />
+                <input type=radio name="rb04" onclick="draw_per_capita_by_year(2000)" /> 2000 <br />
+                <input type=radio name="rb04" onclick="draw_per_capita_by_year(2005)" /> 2005 <br />
+                <input type=radio name="rb04" onclick="draw_per_capita_by_year(2010)" /> 2010 <br />
+                <input type=radio name="rb04" onclick="draw_per_capita_by_year(2014)" /> 2014 <br />
+                <input type=radio name="rb04" onclick="draw_per_capita_by_year(2015)" /> 2015 <br />
+                <input type=radio name="rb04" onclick="draw_per_capita_by_year(2016)" /> 2016 <br />
                 <label>Analysis</label> <br />
                 <textarea id="ta03" class="form-control" rows="8" readonly>To begin, select a year.</textarea>
             </fieldset>

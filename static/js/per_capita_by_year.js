@@ -1,11 +1,13 @@
 
-function draw_per_capita_by_year(selected_year_paramenter) {
+function draw_per_capita_by_year(year) {
 
-  selected_year = selected_year_paramenter
+  selected_year = 1990
+
+  if (typeof(year) != 'undefined') {
+    selected_year = year
+  }
 
   console.log('function per_capita_by_year.drawChar(' + selected_year + ') was called.')
-
-  ta03.innerHTML = 'To begin, select a year.'
 
   switch (selected_year) {
     case 1990:
@@ -33,8 +35,6 @@ function draw_per_capita_by_year(selected_year_paramenter) {
       ta03.innerHTML = 'Venezuela significantly falters whereas Chile and Argentina become dominant.'
       break
   }
-
-  console.log('selected_year:' + selected_year)
 
   var url = 'https://docs.google.com/spreadsheets/d/1CeiVB_u3H8lGjD9KlxkKzsdhivRMPKF0D8XT2qAzt0Y/edit?usp=sharing'
   

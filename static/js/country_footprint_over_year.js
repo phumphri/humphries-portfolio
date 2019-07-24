@@ -1,13 +1,15 @@
 
 function draw_country_footprint_over_year(country) {
 
-  console.log('function country_footprint_over_year.drawChar(' + country + ') was called.')
+  var selected_country = 'AR'
 
-  country_name = 'South America'
+  if (typeof(country) != "undefined") {
+    selected_country = country
+  }
 
-  ta04.innerHTML = 'Analysis for South America'
+  console.log('function country_footprint_over_year.drawChar(' + selected_country + ') was called.')
 
-  switch (country) {
+  switch (selected_country) {
     case 'SA':
       country_name = 'South America'
       ta04.innerHTML = 'South America has a steady increase in production, with the corresponding increase in supply.'
@@ -46,7 +48,7 @@ function draw_country_footprint_over_year(country) {
       break
     case 'PE':
       country_name = 'Peru'
-      ta04.innerHTML = 'Peru has had to use its stock and to fill the difference between production and demand.'
+      ta04.innerHTML = 'Peru decreased exports and stocks to fill the difference between production and demand.'
       break
     case 'SU':
       country_name = 'Suriname'
@@ -61,8 +63,6 @@ function draw_country_footprint_over_year(country) {
       ta04.innerHTML = 'Venezuela has decreasing production that has resulted in decreasing exports.'
       break
   }
-
-  console.log('country_name:' + country_name)
 
   var url = 'https://docs.google.com/spreadsheets/d/1CeiVB_u3H8lGjD9KlxkKzsdhivRMPKF0D8XT2qAzt0Y/edit?usp=sharing'
 
