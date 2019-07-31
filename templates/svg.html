@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Patrick Humphries</title>
+
+    <!-- Metadata -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Personal Decorations -->
+    <link rel="stylesheet" type="text/css" href="https://humphries-inf554.s3-us-west-1.amazonaws.com/viterbi_3.css" />
+    <link rel="shortcut icon" href="https://www.usc.edu/favicon.ico" />
+    <link rel="favicon" href="https://www.usc.edu/favicon.ico" />
+</head>
+
+<body>
+    <!-- South America Energy data from Google Sheets -->
+    <!-- <script type="text/javascript" src="total_energy_by_production_and_import.js"></script> -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/total_energy_by_production_and_import.js') }}"></script>
+
+    <!-- Google Libraries -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { packages: ['corechart'] });
+        // google.charts.setOnLoadCallback(draw_series_by_country_over_year);
+    </script>
+
+    <!-- Bootstrap -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
+
+    <!-- Data Driven Documents -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Common Heading -->
+    <div class="container-fluid">
+        <div class="row cardinal_background">
+            <div class="col-lg-2 cardinal project_name">
+                <img src="https://vsoeapp1.vsoe.usc.edu/images/USC-Bar-cardinal.gif">
+                <br />
+            </div>
+            <div class="col-lg-7 cardinal_background project_name">
+                Patrick Humphries
+            </div>
+            <div class="col-lg-3 cardinal_background bootcamp_name">
+                <p class="gold">Patrick Humphries, M.B.A.
+                    <br />
+                    INF 554: Data Visualization
+                    <br />
+                    August 26, 2019
+                </p>
+            </div>
+        </div>
+
+        <!-- Left margin with navigation. -->
+        <div class="row"></div>
+
+            <!-- Display the SVG visualization generated with D3 -->
+            <div class="col-lg-10">
+                <h1>Supply Per Capita (gigajoules) within Production and Imports</h1>
+            </div>
+        </div>
+        <!-- Total Energy by Production and Net Imports -->
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-2">
+                <fieldset class="padding_5px">
+                    <legend>Year</legend>
+                    <label>Select Year</label>
+                    <br />
+                    <input type=radio name="total_energy" onclick="draw_total_energy_by_production_and_import(1990)" /> 1990
+                    <br />
+                    <input type=radio name="total_energy" onclick="draw_total_energy_by_production_and_import(1995)" /> 1995
+                    <br />
+                    <input type=radio name="total_energy" onclick="draw_total_energy_by_production_and_import(2000)" /> 2000
+                    <br />
+                    <input type=radio name="total_energy" onclick="draw_total_energy_by_production_and_import(2005)" /> 2005
+                    <br />
+                    <input type=radio name="total_energy" onclick="draw_total_energy_by_production_and_import(2010)" /> 2010
+                    <br />
+                    <input type=radio name="total_energy" onclick="draw_total_energy_by_production_and_import(2014)" /> 2014
+                    <br />
+                    <input type=radio name="total_energy" onclick="draw_total_energy_by_production_and_import(2015)" /> 2015
+                    <br />
+                    <input type=radio name="total_energy" onclick="draw_total_energy_by_production_and_import(2016)" /> 2016
+                    <br />
+                    <label>Analysis</label>
+                    <br />
+                    <textarea id="ta03" rows="8" cols="30" readonly>To begin, select a year.</textarea>
+                </fieldset>
+            </div>
+            <div id="drawing" class="col-lg-8">
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
