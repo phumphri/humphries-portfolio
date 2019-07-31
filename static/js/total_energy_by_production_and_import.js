@@ -164,6 +164,18 @@ function handle_total_energy_by_production_and_imports(response) {
     .range([min_circle, max_circle])
     .nice()
 
+  // Line for import/export separation.
+  svg.append("line")
+    .attr("x1", left_margin.toString())
+    .attr("y1", imports_scale(0).toString())
+    .attr("x2", (chart_width - right_margin).toString())
+    .attr("y2", imports_scale(0).toString())
+    .attr("stroke", "green")
+    .attr("stroke-width", "20")
+    .style("stroke-opacity", .2)
+    .append("svg:title")
+    .text(function (d) { return "Exporters above, importers below." })
+
   // Draw circles.
   var circles = svg.selectAll("circle")
     .data(circle_table)
@@ -178,7 +190,7 @@ function handle_total_energy_by_production_and_imports(response) {
     .style("stroke", "red")
     .style("fill-opacity", .2)
     .append("svg:title")
-    .text(function(d) { return d[percapita_index] })
+    .text(function (d) { return d[percapita_index] })
 
   // Label circles.
   var circle_labels = svg.selectAll("text")
@@ -199,7 +211,7 @@ function handle_total_energy_by_production_and_imports(response) {
   svg.append("g")
     .attr("class", "axis")
     .attr("transform", "translate(0," + (chart_height - bottom_margin) + ")")
-    .call(xAxis);
+    .call(xAxis)
 
   // Vertical Axis
   var yAxis = d3.axisLeft().scale(imports_scale)
@@ -209,17 +221,17 @@ function handle_total_energy_by_production_and_imports(response) {
     .attr("transform", "translate(" + left_margin + ", 0)")
     .call(yAxis)
     .append("svg:title")
-    .text(function(d) { return "Negative indicates exports." })
+    .text(function (d) { return "Negative indicates exports." })
 
   // Label for y axis
   svg.append("text")
     .attr("transform", "rotate(-90)")
     .attr("y", "50")
-    .attr("x", (((chart_height/2) * (-1)).toString()))
+    .attr("x", (((chart_height / 2) * (-1)).toString()))
     .style("text-anchor", "middle")
     .text("Net imports [Imports - Exports - Bunkers] (petajoules)")
     .append("svg:title")
-    .text(function(d) { return "Negative indicates exports." })
+    .text(function (d) { return "Negative indicates exports." })
 
 
   // Label for x axis
@@ -228,6 +240,9 @@ function handle_total_energy_by_production_and_imports(response) {
     .attr("x", (chart_width / 2).toString())
     .style("text-anchor", "middle")
     .text("Primary energy production (petajoules)")
+
+  console.log("imports_scale(0):  " + imports_scale(0).toString())
+
 
 
 }
