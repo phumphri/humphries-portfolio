@@ -41,15 +41,10 @@ def sae():
         message_from_the_application = 'Step One.',
         current_time=datetime.datetime.utcnow()), 200
 
-@app.route('/inkscape', methods=['GET'])
-def inkscape():
+@app.route('/sae_2', methods=['GET'])
+def sae_2():
 
-    return render_template('inkscape.html'), 200
-
-@app.route('/svg', methods=['GET'])
-def svg():
-
-    return render_template('svg.html'), 200
+    return render_template('sae_2.html'), 200
     
 # Index page.
 @app.route("/")

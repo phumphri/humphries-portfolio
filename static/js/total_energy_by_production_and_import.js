@@ -12,8 +12,8 @@ function draw_total_energy_by_production_and_import(year) {
 
   switch (selected_year) {
     case 1990:
-      var s = "Venezuela by far has most energy per capita.  " 
-        s = s + "Brazil, with large production and imports, is only on par with Chile."
+      var s = "Venezuela by far has most energy per capita.  "
+      s = s + "Brazil, with large production and imports, is only on par with Chile."
       ta03.innerHTML = s
       break
     case 1995:
@@ -135,18 +135,26 @@ function handle_total_energy_by_production_and_imports(response) {
   }
 
   // Define Production Scale
-  var max_production = d3.max(circle_table, function (d) { return d[production_index] })
-  var min_production = d3.min(circle_table, function (d) { return d[production_index] })
+  var max_production = 12000
+  var min_production = 0
+  // var max_production = d3.max(circle_table, function (d) { return d[production_index] })
+  // var min_production = d3.min(circle_table, function (d) { return d[production_index] })
   var production_scale = d3.scaleLinear()
-    .domain([min_production, max_production])
-    .range([left_margin + max_circle, chart_width - right_margin - max_circle])
+    .domain([min_production - 1000, max_production + 1000])
+    .range([left_margin, chart_width - right_margin])
+  // .domain([min_production, max_production])
+  // .range([left_margin + max_circle, chart_width - right_margin - max_circle])
 
   // Define Import Scale 
-  var max_import = d3.max(circle_table, function (d) { return d[imports_index] })
-  var min_import = d3.min(circle_table, function (d) { return d[imports_index] })
+  var max_import = 2000
+  var min_import = -6000
+  // var max_import = d3.max(circle_table, function (d) { return d[imports_index] })
+  // var min_import = d3.min(circle_table, function (d) { return d[imports_index] })
   var imports_scale = d3.scaleLinear()
-    .domain([min_import, max_import])
-    .range([top_margin + max_circle, chart_height - bottom_margin - max_circle])
+    .domain([min_import - 1000, max_import + 1000])
+    .range([top_margin, chart_height - bottom_margin])
+  // .domain([min_import, max_import])
+  // .range([top_margin + max_circle, chart_height - bottom_margin - max_circle])
 
   // Define Per Capita Scale
   var max_per_capita = d3.max(circle_table, function (d) { return d[percapita_index] })
@@ -202,17 +210,18 @@ function handle_total_energy_by_production_and_imports(response) {
 
   // Label for y axis
   svg.append("text")
-    .attr("y", (chart_height / 2).toString())
-    .attr("x", "0")
-    .style("text-anchor", "left")
-    .text("Imports")
+    .attr("transform", "rotate(-90)")
+    .attr("y", "50")
+    .attr("x", (((chart_height/2) * (-1)).toString()))
+    .style("text-anchor", "middle")
+    .text("Net imports [Imports - Exports - Bunkers] (petajoules)")
 
   // Label for x axis
   svg.append("text")
-    .attr("y", (chart_height).toString())
-    .attr("x", (chart_width/2).toString())
+    .attr("y", (chart_height - 10).toString())
+    .attr("x", (chart_width / 2).toString())
     .style("text-anchor", "middle")
-    .text("Production")
+    .text("Primary energy production (petajoules)")
 
 
 }

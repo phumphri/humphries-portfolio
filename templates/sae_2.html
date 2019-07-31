@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Patrick Humphries</title>
+
+    <!-- Metadata -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Personal Decorations -->
+    <link rel="stylesheet" type="text/css" href="https://humphries-inf554.s3-us-west-1.amazonaws.com/viterbi_3.css" />
+    <link rel="shortcut icon" href="https://www.usc.edu/favicon.ico" />
+    <link rel="favicon" href="https://www.usc.edu/favicon.ico" />
+</head>
+
+<body>
+    <!-- South America Energy data from Google Sheets -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/total_energy_by_production_and_import.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/sae_hidden_or_visible_2.js') }}"></script>
+
+    <!-- Google Libraries -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { packages: ['corechart'] });
+        // google.charts.setOnLoadCallback(draw_series_by_country_over_year);
+    </script>
+
+    <!-- Bootstrap -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
+
+    <!-- Data Driven Documents -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Common Heading -->
+    <div class="container-fluid">
+        <div class="row cardinal_background">
+            <div class="col-lg-2 cardinal project_name">
+                <img src="https://vsoeapp1.vsoe.usc.edu/images/USC-Bar-cardinal.gif">
+                <br />
+            </div>
+            <div class="col-lg-7 cardinal_background project_name">
+                South America Energy
+            </div>
+            <div class="col-lg-3 cardinal_background bootcamp_name">
+                <p class="gold">Patrick Humphries, M.B.A.
+                    <br />
+                    INF 554: Data Visualization
+                    <br />
+                    August 26, 2019
+                </p>
+            </div>
+        </div>
+
+        <!-- Left margin with navigation. -->
+        <div class="row">
+            <!-- Hide or unhide rows. -->
+            <div class=row>
+                <div class="btn-group btn-group-lg">
+                    <button type="button" class="btn btn-primary cardinal_background gold_color" onclick="sae_hidden_or_visible_2('assignment')">
+                        Assignment
+                    </button>
+                    <button type="button" class="btn btn-primary cardinal_background gold_color" onclick="sae_hidden_or_visible_2('inkscape')">
+                        Inkscape
+                    </button>
+                    <button type="button" class="btn btn-primary cardinal_background gold_color" onclick="sae_hidden_or_visible_2('svg')">
+                        SVG
+                    </button>
+                    <button type="button" class="btn btn-primary cardinal_background gold_color" onclick="sae_hidden_or_visible_2('all')">
+                        All
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    <!-- This row displays assignment, approach, provenance, and links to code. -->
+    <div id="assignment" class="row">
+        <div class="col-lg-3">
+            <fieldset>
+                <legend>Assignment</legend>
+                <p><b>Assignment 2. </b> Use UN Data for the same 10
+                    countries of Assignment 1 to create a bubble cloud
+                    with Inkscape (http://www.inkscape.org). Recreate
+                    the same bubble cloud using using SVG code (i.e.,
+                    writing SVG yourself not the SVG created by
+                    Inkscape!) and using javascript (i.e., dynamically
+                    generating the SVG). Use node.js to develop and
+                    document your set-up in the README.md.
+                    </p>
+            </fieldset>
+        </div>
+        <div class="col-lg-3">
+            <fieldset>
+                <legend>Approach</legend>
+                <p>Since the author used armed forces of South America to critique a newpaper infographic, the approach taken was do something similar for energy</p>
+                <p>A Google Sheet was populated with energy data for the twelve sovereign nations of South America.</p>
+                <p>Using this Google Sheet, bubble charts were created using Inscape and SVG.</p>
+            </fieldset>
+        </div>
+        <div class="col-lg-3">
+            <fieldset>
+                <legend>Provenance</legend>
+                <p>File "SYB62_T23_201904_Production, Trade and Supply of Energy" was downloaded from http://data.un.org.</p>
+                <p>Using the QUERY function of Google Sheets, data was selected and organized into tables.</p>
+                <p>The <i>values</i> of these tables were copied to a new Google Sheet. This Google sheet was used as the source for the following charts.</p>
+                <p>This Google Sheet was published to the web with View authority granted to Public.</p>
+            </fieldset>
+        </div>
+        <div class="col-lg-3">
+            <fieldset>
+                <legend>Code</legend>
+                <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/blob/master/templates/sae.html">sae.html</a></p>
+                <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/blob/master/static/js/series_by_country_over_year.js">series_by_country_over_year.js</a></p>
+                <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/blob/master/static/js/country_footprint_over_year.js">country_footprint_over_year.js</a></p>
+                <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/blob/master/static/js/country_by_series_over_year.js">country_by_series_over_year.js</a></p>
+                <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/blob/master/static/js/per_capita_by_year.js">per_capita_by_year.js</a></p>
+                <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/blob/master/static/js/sae_hidden_or_visible.js">sae_hidden_or_visible.js</a></p>
+            </fieldset>
+            <fieldset>
+                <legend>Data</legend>
+                <p><a target="_blank" href="https://docs.google.com/spreadsheets/d/1CeiVB_u3H8lGjD9KlxkKzsdhivRMPKF0D8XT2qAzt0Y/edit#gid=703773082">SA_Energy_Data</a></p>
+            </fieldset>
+        </div>
+    </div>
+    
+        <!-- Total Energy by Production and Net Imports -->
+        <div id="inkscape" class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3">
+                <fieldset class="padding_5px">
+                    <legend>Energy Per Capita Using Inkscape</legend>
+                </fieldset>
+            </div>
+            <div class="col-lg-8"></div>
+        </div>
+
+        <!-- Total Energy by Production and Net Imports -->
+        <div id="svg" class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3">
+                <fieldset class="padding_5px">
+                    <legend>Energy Per Capita Using SVG</legend>
+                    <label>Select Year</label>
+                    <br />
+                    <input type=radio name="total_energy" onclick="draw_total_energy_by_production_and_import(1990)" /> 1990
+                    <br />
+                    <input type=radio name="total_energy" onclick="draw_total_energy_by_production_and_import(1995)" /> 1995
+                    <br />
+                    <input type=radio name="total_energy" onclick="draw_total_energy_by_production_and_import(2000)" /> 2000
+                    <br />
+                    <input type=radio name="total_energy" onclick="draw_total_energy_by_production_and_import(2005)" /> 2005
+                    <br />
+                    <input type=radio name="total_energy" onclick="draw_total_energy_by_production_and_import(2010)" /> 2010
+                    <br />
+                    <input type=radio name="total_energy" onclick="draw_total_energy_by_production_and_import(2014)" /> 2014
+                    <br />
+                    <input type=radio name="total_energy" onclick="draw_total_energy_by_production_and_import(2015)" /> 2015
+                    <br />
+                    <input type=radio name="total_energy" onclick="draw_total_energy_by_production_and_import(2016)" /> 2016
+                    <br />
+                    <label>Analysis</label>
+                    <br />
+                    <textarea id="ta03" rows="8" cols="30" readonly>To begin, select a year.</textarea>
+                </fieldset>
+            </div>
+            <div id="drawing" class="col-lg-8">
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
