@@ -177,7 +177,8 @@ function handle_total_energy_by_production_and_imports(response) {
     .style("fill", "green")
     .style("stroke", "red")
     .style("fill-opacity", .2)
-    .text(function (d) { return d[percapita_index].toString() })
+    .append("svg:title")
+    .text(function(d) { return d[percapita_index] })
 
   // Label circles.
   var circle_labels = svg.selectAll("text")
@@ -206,7 +207,9 @@ function handle_total_energy_by_production_and_imports(response) {
   svg.append("g")
     .attr("class", "axis")
     .attr("transform", "translate(" + left_margin + ", 0)")
-    .call(yAxis);
+    .call(yAxis)
+    .append("svg:title")
+    .text(function(d) { return "Negative indicates exports." })
 
   // Label for y axis
   svg.append("text")
@@ -215,6 +218,9 @@ function handle_total_energy_by_production_and_imports(response) {
     .attr("x", (((chart_height/2) * (-1)).toString()))
     .style("text-anchor", "middle")
     .text("Net imports [Imports - Exports - Bunkers] (petajoules)")
+    .append("svg:title")
+    .text(function(d) { return "Negative indicates exports." })
+
 
   // Label for x axis
   svg.append("text")
