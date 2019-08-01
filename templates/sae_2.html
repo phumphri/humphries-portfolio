@@ -17,16 +17,17 @@
 </head>
 
 <body onload="draw_total_energy_by_production_and_import(1990)">
-    <!-- South America Energy data from Google Sheets -->
+    South America Energy data from Google Sheets -->
     <script type="text/javascript" src="{{ url_for('static', filename='js/total_energy_by_production_and_import.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/sae_hidden_or_visible_2.js') }}"></script>
+    <!-- <script type="text/javascript" src="total_energy_by_production_and_import.js"></script>
+    <script type="text/javascript" src="sae_hidden_or_visible_2.js"></script>  -->
 
     <!-- Google Libraries -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         google.charts.load('current', { packages: ['corechart'] });
-        // google.charts.setOnLoadCallback(draw_series_by_country_over_year);
     </script>
 
     <!-- Bootstrap -->
@@ -78,63 +79,151 @@
             </div>
         </div>
 
-    <!-- This row displays assignment, approach, provenance, and links to code. -->
-    <div id="assignment" class="row">
-        <div class="col-lg-3">
-            <fieldset>
-                <legend>Assignment</legend>
-                <p><b>Assignment 2. </b> Use UN Data for the same 10
-                    countries of Assignment 1 to create a bubble cloud
-                    with Inkscape (http://www.inkscape.org). Recreate
-                    the same bubble cloud using using SVG code (i.e.,
-                    writing SVG yourself not the SVG created by
-                    Inkscape!) and using javascript (i.e., dynamically
-                    generating the SVG). Use node.js to develop and
-                    document your set-up in the README.md.
+        <!-- This row displays assignment, approach, provenance, and links to code. -->
+        <div id="assignment" class="row">
+            <div class="col-lg-3">
+                <fieldset>
+                    <legend>Assignment</legend>
+                    <p><b>Assignment 2. </b> Use UN Data for the same 10
+                        countries of Assignment 1 to create a bubble cloud
+                        with Inkscape (http://www.inkscape.org). Recreate
+                        the same bubble cloud using using SVG code (i.e.,
+                        writing SVG yourself not the SVG created by
+                        Inkscape!) and using javascript (i.e., dynamically
+                        generating the SVG). Use node.js to develop and
+                        document your set-up in the README.md.
                     </p>
-            </fieldset>
+                </fieldset>
+            </div>
+            <div class="col-lg-3">
+                <fieldset>
+                    <legend>Approach</legend>
+                    <p>Since the author used armed forces of South America to critique a newpaper infographic, the approach taken was do something similar for energy</p>
+                    <p>A Google Sheet was populated with energy data for the twelve sovereign nations of South America.</p>
+                    <p>Using this Google Sheet, bubble charts were created using Inkscape and SVG.</p>
+                </fieldset>
+            </div>
+            <div class="col-lg-3">
+                <fieldset>
+                    <legend>Provenance</legend>
+                    <p>File "SYB62_T23_201904_Production, Trade and Supply of Energy" was downloaded from http://data.un.org.</p>
+                    <p>Using the QUERY function of Google Sheets, data was selected and organized into tables.</p>
+                    <p>The <i>values</i> of these tables were copied to a new Google Sheet. This Google sheet was used as the source for the following charts.</p>
+                    <p>This Google Sheet was published to the web with View authority granted to Public.</p>
+                </fieldset>
+            </div>
+            <div class="col-lg-3">
+                <fieldset>
+                    <legend>Code</legend>
+                    <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/blob/master/templates/sae_2.html">sae_2.html</a></p>
+                    <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/blob/master/static/js/total_energy_by_production_and_import.js">total_energy_by_production_and_import.js</a></p>
+                    <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/blob/master/static/js/sae_hidden_or_visible_2.js">sae_hidden_or_visible_2.js</a></p>
+                    <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/blob/master/static/js/app.js">app.js</a></p>
+                    <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/blob/master/static/img/sae_2.svg">sae_2.svg</a></p>
+                </fieldset>
+                <fieldset>
+                    <legend>Data</legend>
+                    <p><a target="_blank" href="https://docs.google.com/spreadsheets/d/1CeiVB_u3H8lGjD9KlxkKzsdhivRMPKF0D8XT2qAzt0Y/edit#gid=703773082">SA_Energy_Data</a></p>
+                </fieldset>
+            </div>
         </div>
-        <div class="col-lg-3">
-            <fieldset>
-                <legend>Approach</legend>
-                <p>Since the author used armed forces of South America to critique a newpaper infographic, the approach taken was do something similar for energy</p>
-                <p>A Google Sheet was populated with energy data for the twelve sovereign nations of South America.</p>
-                <p>Using this Google Sheet, bubble charts were created using Inkscape and SVG.</p>
-            </fieldset>
-        </div>
-        <div class="col-lg-3">
-            <fieldset>
-                <legend>Provenance</legend>
-                <p>File "SYB62_T23_201904_Production, Trade and Supply of Energy" was downloaded from http://data.un.org.</p>
-                <p>Using the QUERY function of Google Sheets, data was selected and organized into tables.</p>
-                <p>The <i>values</i> of these tables were copied to a new Google Sheet. This Google sheet was used as the source for the following charts.</p>
-                <p>This Google Sheet was published to the web with View authority granted to Public.</p>
-            </fieldset>
-        </div>
-        <div class="col-lg-3">
-            <fieldset>
-                <legend>Code</legend>
-                <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/blob/master/templates/sae_2.html">sae_2.html</a></p>
-                <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/blob/master/static/js/total_energy_by_production_and_import.js">total_energy_by_production_and_import.js</a></p>
-                <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/blob/master/static/js/sae_hidden_or_visible_2.js">sae_hidden_or_visible_2.js</a></p>
-                <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/blob/master/static/js/app.js">app.js</a></p>
-            </fieldset>
-            <fieldset>
-                <legend>Data</legend>
-                <p><a target="_blank" href="https://docs.google.com/spreadsheets/d/1CeiVB_u3H8lGjD9KlxkKzsdhivRMPKF0D8XT2qAzt0Y/edit#gid=703773082">SA_Energy_Data</a></p>
-            </fieldset>
-        </div>
-    </div>
-    
+
         <!-- Total Energy by Production and Net Imports -->
         <div id="inkscape" class="row">
             <div class="col-lg-1"></div>
             <div class="col-lg-3">
                 <fieldset class="padding_5px">
-                    <legend>Energy Per Capita Using Inkscape</legend>
+                    <legend>Energy Per Capita Using Inkscape 2016</legend>
+                    <table class="table table-striped text-right">
+                        <thead>
+                            <tr>
+                                <th class="text-right">Country</th>
+                                <th class="text-right">Production</th>
+                                <th class="text-right">Import</th>
+                                <th class="text-right">Per Capita</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Arentina</td>
+                                <td>3181</td>
+                                <td>442</td>
+                                <td>83</td>
+                            </tr>
+                            <tr>
+                                <td>Bolivia</td>
+                                <td>921</td>
+                                <td>-549</td>
+                                <td>34</td>
+                            </tr>
+                            <tr>
+                                <td>Brazil</td>
+                                <td>12,183</td>
+                                <td>45</td>
+                                <td>59</td>
+                            </tr>
+                            <tr>
+                                <td>Chile</td>
+                                <td>525</td>
+                                <td>1,059</td>
+                                <td>88</td>
+                            </tr>
+                            <tr>
+                                <td>Colombia</td>
+                                <td>5,243</td>
+                                <td>-3,663</td>
+                                <td>36</td>
+                            </tr>
+                            <tr>
+                                <td>Ecuador</td>
+                                <td>1,321</td>
+                                <td>-691</td>
+                                <td>38</td>
+                            </tr>
+                            <tr>
+                                <td>Guyana</td>
+                                <td>7</td>
+                                <td>30</td>
+                                <td>48</td>
+                            </tr>
+                            <tr>
+                                <td>Paraguay</td>
+                                <td>344</td>
+                                <td>-76</td>
+                                <td>39</td>
+                            </tr>
+                            <tr>
+                                <td>Peru</td>
+                                <td>974</td>
+                                <td>-25</td>
+                                <td>32</td>
+                            </tr>
+                            <tr>
+                                <td>Suriname</td>
+                                <td>39</td>
+                                <td>-10</td>
+                                <td>52</td>
+                            </tr>
+                            <tr>
+                                <td>Uruguay</td>
+                                <td>126</td>
+                                <td>88</td>
+                                <td>62</td>
+                            </tr>
+                            <tr>
+                                <td>Venezuela</td>
+                                <td>6,751</td>
+                                <td>-4,453</td>
+                                <td>73</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </fieldset>
             </div>
-            <div class="col-lg-8"></div>
+            <div class="col-lg-8">
+                <!-- <object data="sae_2.svg" type="image/svg+xml" width="1200" height="700"></object> -->
+                <object type="image/svg+xml"  data="{{ url_for('static', filename='img/sae_2.svg') }}"></object>
+            </div>
         </div>
 
         <!-- Total Energy by Production and Net Imports -->
