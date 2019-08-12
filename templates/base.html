@@ -20,14 +20,14 @@
 <div class="container-fluid">
 
     <div class="row cardinal_background">
-        <div class="col-lg-2 cardinal project_name">
+        <div class="col-sm-2 cardinal project_name">
             <img src="https://vsoeapp1.vsoe.usc.edu/images/USC-Bar-cardinal.gif"><br />
         </div>
-        <div class="col-lg-7 cardinal_background project_name">
+        <div class="col-sm-7 cardinal_background project_name">
             {{ project_name|title }}
 
         </div>
-        <div class="col-lg-3 cardinal_background bootcamp_name">
+        <div class="col-sm-3 cardinal_background bootcamp_name">
             <p class="gold">Patrick Humphries, M.B.A.<br />
                 INF 554:  Data Visualization<br />
                 {{ moment(current_time).format('LLL') }}, {{ moment(current_time).fromNow(refresh = True) }}.
