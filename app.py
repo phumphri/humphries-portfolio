@@ -1,11 +1,17 @@
 
-# Upgrade libraries.
+print('Updating libraries.')
 import os
 if True:
     os.system("python -m pip install --upgrade pip")
     os.system("python -m pip install --upgrade flask")
     os.system("python -m pip install --upgrade flask_cors")
+    os.system("python -m pip install --upgrade flask_bootstrap")
+    os.system("python -m pip install --upgrade flask_moment")
+    os.system("python -m pip install --upgrade datetime")
+    os.system("python -m pip install --upgrade werkzeug")
+    os.system("python -m pip install --upgrade werkzeug.execeptions")
 
+print('Importing libraries.')
 # from requests.models import Response
 import flask
 import socket
@@ -26,6 +32,38 @@ import datetime
 # Assigning the Flask framework.
 app = Flask(__name__)
 
+# INF554:  Information Visualization
+@app.route('/inf554', methods=['GET'])
+def inf554():
+
+    return render_template('inf554.html', 
+        project_name="Information Visualization", 
+        current_time=datetime.datetime.utcnow()), 200
+
+# INF552:  Introduction to Machine Learning
+@app.route('/inf552', methods=['GET'])
+def inf552():
+
+    return render_template('inf552.html', 
+        project_name="Machine Learning", 
+        current_time=datetime.datetime.utcnow()), 200
+
+# INF553:  Foundations and Applications of Data Mining
+@app.route('/inf553', methods=['GET'])
+def inf553():
+
+    return render_template('inf553.html', 
+        project_name="Data Mining", 
+        current_time=datetime.datetime.utcnow()), 200
+
+# INF555:  Interaction Design and Usability Testing
+@app.route('/inf555', methods=['GET'])
+def inf555():
+
+    return render_template('inf555.html', 
+        project_name="Design and Testing", 
+        current_time=datetime.datetime.utcnow()), 200
+
 # quickstart
 @app.route('/quickstart', methods=['GET'])
 def quickstart():
@@ -43,6 +81,7 @@ def sae():
 
 @app.route('/sae_2', methods=['GET'])
 def sae_2():
+
 
     return render_template('sae_2.html'), 200
     
@@ -80,7 +119,7 @@ def simulate_internal_server_error():
 def not_implemented(e):
     return render_template('501.html', 
         project_name="Not Implemented", 
-        current_time=datetime.datetime.utcnow()), 400
+        current_time=datetime.datetime.utcnow()), 501
 
 @app.route("/not_implemented")
 def raise_not_implemented():
@@ -102,7 +141,7 @@ def transaction():
     if request.method == 'POST':
         print('Processing POST request')
         try:
-            data_string = request.get_data().decode('utf-8')
+            data_string = app.request.get_data().decode('utf-8')
             data_list = data_string.split('\r\n')
             for data_entry in data_list:
                 print(data_entry)
@@ -126,14 +165,14 @@ if __name__ == "__main__":
     bootstrap = Bootstrap(app)
     moment = Moment(app)
     
+
     if (hostname == 'XPS'):
-        app.run(debug=True)
+        app.run(debug=False, use_reloader=True)
     elif (hostname == 'DESKTOP-S08TN4O'):  
-        app.run(debug=True)
+        app.run(debug=False, use_reloader=True)
     else:
-        from os import environ
-        print("Port", environ.get("PORT", "Not Found"))
-        app.run(debug=False, host='0.0.0.0', port=int(environ.get("PORT", 5000)))
+        print("Port", os.environ.get("PORT", "Not Found"))
+        app.run(debug=False, host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
 
     
 

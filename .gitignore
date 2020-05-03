@@ -4,10 +4,7 @@
 # Git Ignore
 .gitignore
 
-# Job Applications
-jobs/Patrick Humphries Cover Letter.docx
-jobs/Patrick Humphries Cover Letter.pdf
-jobs/atrick Humphries Resume.docx
-jobs/jobsframe.png
-jobs/UCLA/*
-
+# Temporary ignore files that will be later removed.
+README_2.md
+usc.html
+jobs

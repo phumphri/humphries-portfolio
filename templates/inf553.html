@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+
+{% block title %}{{ project_name|title }}{% endblock %}
+
+
+{% block body %}
+{{ super() }}
+
+<div class="container-fluid">
+    <div class="col-sm-12">
+        <h2>INF553:  Foundations and Applications of Data Mining</h2>
+    </div>
+</div>
+<div class="container-fluid">
+
+    <div class="col-sm-4" style="padding:0em 2em 2em">
+        <div class="row">
+            <fieldset>
+                <legend>Description</legend>
+                <p>Data mining and machine learning algorithms for analyzing very large data sets. Emphasis on Map Reduce. Case studies.
+                </p>
+                <p><a href="https://catalogue.usc.edu/preview_program.php?catoid=11&poid=11335&hl=applied+data+science&returnto=search" 
+                    target="_blank"><b>USC Catalogue 2019-2020</b></a>
+                </p>
+            </fieldset>
+        </div>
+    </div>
+
+    <div class="col-sm-8" style="padding:0em 2em 2em">
+        <div class="row">
+            <fieldset>
+                <legend>Assignments</legend>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Week</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="/not_implemented"
+                                target="_blank"><b>Assignment 1</b></a></td>
+                            <td>
+                                <ul>
+                                    <li>Introduction to Data Mining</li>
+                                    <li>MapReduce</li>
+                                    <li>Frequent Itemsets</li>
+                                    <li>Association Rules</li>
+                                    <li>Shingling</li>
+                                    <li>Minhashing</li>
+                                    <li>Locality Sensitive Hashing</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="/not_implemented"
+                                target="_blank"><b>Assignment 2</b></a></td>
+                            <td>
+                                <ul>
+                                    <li>Recommendation Systems</li>
+                                    <li>Analysis of Massive Graphs</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="/not_implemented"
+                                target="_blank"><b>Assignment 3</b></a></td>
+                            <td>
+                                <ul>
+                                    <li>Analysis of Massive Graphs</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="/not_implemented"
+                                target="_blank"><b>Assignment 4</b></a></td>
+                            <td>
+                                <ul>
+                                    <li>Link Analysis</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
