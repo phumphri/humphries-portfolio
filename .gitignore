@@ -5,7 +5,4 @@ __pycache__
 # Git Ignore
 .gitignore
 
-# Temporary ignore files that will be later removed.
-README_2.md
-usc.html
-jobs
+
