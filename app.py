@@ -37,14 +37,18 @@ app = Flask(__name__)
 @app.route('/inf554/<assignment>', methods=['GET'])
 def inf554(assignment):
 
-    print(' ')
-    print('===== debug =====')
-    print('New /inf554/<assignment> was called.')
-    print(' ')
 
     if assignment == 'index':
         return render_template('inf554/index.html', 
             project_name="Information Visualization", 
+            current_time=datetime.datetime.utcnow()), 200
+    elif assignment == 'assignment_1':
+        return render_template('inf554/assignment_1.html', 
+            project_name="South America Energy", 
+            current_time=datetime.datetime.utcnow()), 200
+    elif assignment == 'assignment_2':
+        return render_template('inf554/assignment_2.html', 
+            project_name="South America Energy", 
             current_time=datetime.datetime.utcnow()), 200
     else:
         raise  NotImplemented()
@@ -66,6 +70,10 @@ def inf553(assignment):
 
     if assignment == 'index':
         return render_template('inf553/index.html', 
+            project_name="Data Mining", 
+            current_time=datetime.datetime.utcnow()), 200
+    elif assignment == 'assignment_1':
+        return render_template('inf553/assignment_1.html', 
             project_name="Data Mining", 
             current_time=datetime.datetime.utcnow()), 200
     else:

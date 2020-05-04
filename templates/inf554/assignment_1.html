@@ -2,26 +2,24 @@
 
 {% extends "base.html" %}
 
+{% block title %}{{ project_name|title }}{% endblock %}
+
+
 {% block head %}
 {{ super() }}
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="keywords" content="sandbox, humphries">
+<meta name="keywords" content="inf554, assignment_1, humphries">
 <meta name="Author" content="Patrick Humphries">
 <meta http-equiv="charset" content="utf-8">
 <meta http-equiv="content-type" content="text/html">
 
-<!-- Bootstrap -->
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-
 
 <!-- South America Energy data from Google Sheets -->
-<script type="text/javascript" src="{{ url_for('static', filename='js/series_by_country_over_year.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/country_footprint_over_year.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/country_by_series_over_year.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/per_capita_by_year.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/sae_hidden_or_visible.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_1/series_by_country_over_year.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_1/country_footprint_over_year.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_1/country_by_series_over_year.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_1/per_capita_by_year.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_1/sae_hidden_or_visible.js') }}"></script>
 
 <!-- Google Libraries -->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

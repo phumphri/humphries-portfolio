@@ -1,28 +1,36 @@
 <!DOCTYPE html>
-<html>
 
-<head>
-    <title>Patrick Humphries</title>
+{% extends "base.html" %}
+
+{% block title %}{{ project_name|title }}{% endblock %}
+
+
+{% block head %}
+{{ super() }}
 
     <!-- Metadata -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Bootstrap -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="inf554, assignment_1, humphries">
+    <meta name="Author" content="Patrick Humphries">
+    <meta http-equiv="charset" content="utf-8">
+    <meta http-equiv="content-type" content="text/html">
 
     <!-- Personal Decorations -->
     <link rel="stylesheet" type="text/css" href="https://humphries-inf554.s3-us-west-1.amazonaws.com/viterbi_3.css" />
     <link rel="shortcut icon" href="https://www.usc.edu/favicon.ico" />
     <link rel="favicon" href="https://www.usc.edu/favicon.ico" />
-</head>
 
-<body onload="draw_total_energy_by_production_and_import(1990)">
+    {% endblock %}
+
+    {% block body %}
+    {{ super() }}
+
+    <!-- onload="draw_total_energy_by_production_and_import(1990)"> -->
+
     <!-- South America Energy data from Google Sheets -->
-    <script type="text/javascript" src="{{ url_for('static', filename='js/total_energy_by_production_and_import.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/sae_hidden_or_visible_2.js') }}"></script>
-    <!-- <script type="text/javascript" src="total_energy_by_production_and_import.js"></script>
-    <script type="text/javascript" src="sae_hidden_or_visible_2.js"></script>  -->
-
+    <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_2/total_energy_by_production_and_import.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_2/sae_hidden_or_visible_2.js') }}"></script>
+    
     <!-- Google Libraries -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -31,32 +39,15 @@
     </script>
 
     <!-- Bootstrap -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script> -->
 
     <!-- Data Driven Documents -->
     <script src="https://d3js.org/d3.v5.min.js"></script>
 
     <!-- Common Heading -->
     <div class="container-fluid">
-        <div class="row cardinal_background">
-            <div class="col-sm-2 cardinal project_name">
-                <img src="https://vsoeapp1.vsoe.usc.edu/images/USC-Bar-cardinal.gif">
-                <br />
-            </div>
-            <div class="col-sm-7 cardinal_background project_name">
-                South America Energy
-            </div>
-            <div class="col-sm-3 cardinal_background bootcamp_name">
-                <p class="gold">Patrick Humphries, M.B.A.
-                    <br />
-                    INF 554: Data Visualization
-                    <br />
-                    August 26, 2019
-                </p>
-            </div>
-        </div>
 
         <!-- Left margin with navigation. -->
         <div class="row">
@@ -260,6 +251,5 @@
         </div>
     </div>
 
-</body>
 
-</html>
+    {% endblock %}
