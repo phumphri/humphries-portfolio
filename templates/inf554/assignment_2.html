@@ -20,13 +20,6 @@
     <link rel="shortcut icon" href="https://www.usc.edu/favicon.ico" />
     <link rel="favicon" href="https://www.usc.edu/favicon.ico" />
 
-    {% endblock %}
-
-    {% block body %}
-    {{ super() }}
-
-    <!-- onload="draw_total_energy_by_production_and_import(1990)"> -->
-
     <!-- South America Energy data from Google Sheets -->
     <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_2/total_energy_by_production_and_import.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_2/sae_hidden_or_visible_2.js') }}"></script>
@@ -38,15 +31,20 @@
         google.charts.load('current', { packages: ['corechart'] });
     </script>
 
-    <!-- Bootstrap -->
-    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script> -->
-
     <!-- Data Driven Documents -->
     <script src="https://d3js.org/d3.v5.min.js"></script>
 
-    <!-- Common Heading -->
+    {% endblock %}
+
+    {% block body %}
+    {{ super() }}
+
+    <!-- Call after page is loaded. -->
+    <script>
+        window.onload = draw_total_energy_by_production_and_import(1990)
+    </script>
+
+
     <div class="container-fluid">
 
         <!-- Left margin with navigation. -->

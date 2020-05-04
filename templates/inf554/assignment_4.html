@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block title %}{{ project_name|title }}{% endblock %}
+
+
+{% block head %}
+{{ super() }}
+
+    <!-- Metadata -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Assignment_7, humphries">
+    <meta name="Author" content="Patrick Humphries">
+    <meta http-equiv="charset" content="utf-8">
+    <meta http-equiv="content-type" content="text/html">
+
+    <!-- Data Driven Documents -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Application Scripts -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_4/html_table.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_4/bar_chart.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_4/scatterplot_chart.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_4/bubble_chart.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_4/sae_hidden_or_visible.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_4/main.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_4/common_functions.js') }}"></script>
+
+    <!-- Decorations -->
+    <link rel="stylesheet" type="text/css" href="/static/css/inf554/assignment_4/assignment_4.css" />
+    <link rel="shortcut icon" href="https://www.usc.edu/favicon.ico" />
+    <link rel="favicon" href="https://www.usc.edu/favicon.ico" />
+
+    {% endblock %}
+
+    {% block body %}
+    {{ super() }}
+
+    <!-- Call after page is loaded. -->
+    <script>
+        window.onload = main()
+    </script>
+
+    <div class="container-fluid">
+
+        <!-- Hide or unhide rows. -->
+        <div id="navigation" class=row>
+            <div class="btn-group btn-group-sm">
+                <button type="button" class="btn btn-primary cardinal_background gold_color" onclick="sae_hidden_or_visible('assignment_row')">
+                    Assignment
+                </button>
+                <button type="button" class="btn btn-primary cardinal_background gold_color" onclick="sae_hidden_or_visible('html_table_row')">
+                    HTML Table
+                </button>
+                <button type="button" class="btn btn-primary cardinal_background gold_color" onclick="sae_hidden_or_visible('bar_chart_row')">
+                    Bar Chart
+                </button>
+                <button type="button" class="btn btn-primary cardinal_background gold_color" onclick="sae_hidden_or_visible('scatterplot_chart_row')">
+                    Scatterplot
+                </button>
+                <button type="button" class="btn btn-primary cardinal_background gold_color" onclick="sae_hidden_or_visible('bubble_chart_row')">
+                    Bubble Chart
+                </button>
+                <button type="button" class="btn btn-primary cardinal_background gold_color" onclick="sae_hidden_or_visible('all')">
+                    All
+                </button>
+            </div>
+        </div>
+
+        <!-- This row displays assignment, approach, provenance, and links to code. -->
+        <div id="assignment_row" class="row">
+
+            <div class="col-sm-2">
+                <fieldset>
+                    <legend>Assignment</legend>
+                    <p><b>Assignment 4.</b></p>
+                    <p>From World Bank Open Data download Rural population (% of total population) for 20 countries and a year of your choice.</p>
+                    <p>In an HTML document, load the data as CSV using D3.</p>
+                    <p>With D3, using data joins, create:
+                        <ul>
+                            <li>HTML table,</li>
+                            <li>SVG bar chart</li>
+                            <li>scatterplot</li>
+                            <li>bubble chart</li>
+                        </ul>
+                    </p>
+                </fieldset>
+            </div>
+
+            <div class="col-sm-2">
+                <fieldset>
+                    <legend>Approach</legend>
+                    <p>There are two files: metadata and data.</p>
+                    <p>The dimensions of "Code", "Income Group", and "Region" are taken from the metaada file.</p>
+                    <p>The attribute "Country Name" is taken from the metadata file as well.</p>
+                    <p>The percentage fact "Value" is taken from attribute "2018" of the data table.</p>
+                    <p>When both files are needed for a chart, the data file is joined with the metadata file.</p>
+                    <p></p>
+            </div>
+
+            <div class="col-sm-6">
+                <fieldset>
+                    <legend>Provenance</legend>
+                    <p>The "Metadata" file is the "Metadata_Country_API_SP.RUR.TOTL.ZS_DS2_en_csv_v2_50124.csv" was downloaded from https://data.worldbank.org/.</p>
+                    <p>The "Data" file is the "API_SP.RUR.TOTL.ZS_DS2_en_csv_v2_50124.csv" was downloaded from https://data.worldbank.org/.</p>
+                </fieldset>
+            </div>
+
+            <div class="col-sm-2">
+                <fieldset>
+
+                    <legend>GitHub</legend>
+                    <p><a target="_blank" href="https://github.com/phumphri/INF554/tree/master/Assignment%2004">Code and Data</a></p>
+
+                </fieldset>
+            </div>
+
+        </div>
+
+        <div id="html_table_row" class="row">
+
+            <div id="html_table_div" class="col-sm-6 table-responsive">
+                <fieldset id="html_table_fieldset" class="padding_5px">
+                    <legend>HTTP Table</legend>
+                    <!-- Division containing http table will be placed here by function initialize(). -->
+                </fieldset>
+            </div>
+        </div>
+
+        <div id="bar_chart_row" class="row">
+            <div id="bar_chart_div" class="col-sm-6">
+                <fieldset id="bar_chart_fieldset" class="padding_5px">
+                    <legend>Bar Chart</legend>
+                    <p>The height of these bars is the percentage of rural population.</p>
+                    <p>Hover over a bar to get the name of the country.</p>
+                    <!-- Division containing bar chart will be placed here by function initialize(). -->
+                </fieldset>
+            </div>
+
+        </div>
+
+        <div id="scatterplot_chart_row" class="row">
+            <div id="scatterplot_chart_div" class="col-sm-6">
+                <fieldset id="scatterplot_chart_fieldset" class="padding_5px">
+                    <legend>Scatterplot</legend>
+                    <p>There is a correlation between Income Group and Region</p>
+                    <p>Hover over a circle for details.</p>
+                    <!-- Division containing  scatterplot will be placed here by function initialize(). -->
+                </fieldset>
+            </div>
+        </div>
+
+        <div id="bubble_chart_row" class="row">
+            <div id="bubble_chart_div" class="col-sm-6">
+                <fieldset id="bubble_chart_fieldset" class="padding_5px">
+                    <legend>Bubble Chart</legend>
+                    <p>The size of the circle is the relative percentage of rural population.</p>
+                    <p>Hover over circles for details.</p>
+                    <!-- Division containing  bubble chart will be placed here by function initialize(). -->
+                </fieldset>
+            </div>
+        </div>
+
+    </div>
+
+    {% endblock %}

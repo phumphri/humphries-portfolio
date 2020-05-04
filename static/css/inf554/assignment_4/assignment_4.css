@@ -1,0 +1,79 @@
+@charset "utf-8";
+
+/* Use this css for all portfolio projects. */
+
+body
+{
+    background-color: #fffff0;  /* Ivory */
+    font-family: Verdana, Geneva, sans-serif, serif
+}
+
+h1, h2, h3, h4 {color: #990000;}  /* Cardinal */
+
+.cardinal_background {background-color: #990000;}  /* Cardinal */
+
+.white_background {background-color: white;}
+
+.project_name {color: white; height: 60px; font-size: 28pt; text-align: center; height: 80px;}
+
+.bootcamp_name {color: #FEC52E; height: 60px; vertical-align:middle}
+
+.cardinal_color {color: #990000;}  /* Cardinal */
+
+.gold_color {color: #FEC52E;}  /* Gold */
+
+.ivory_border_color {border-color: #fffff0}
+
+.white_border_color {border-color: white}
+
+.padding_5px {padding: 5px;}
+
+.text_align_left {text-align:  left}
+
+.viterbi_table
+{
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-collapse: collapse;
+    background-color: #fffff0;  /* Ivory */
+    font-size: 9pt
+}
+.viterbi_thead, .viterbi_tfoot {
+    background-color: #990000;  /* Cardinal */
+    color: #FEC52E; /* Gold */
+}
+
+.viterbi_th
+{
+    background-color: #990000;  /* Cardinal */
+    color: #FEC52E; /* Gold */
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    vertical-align: middle;
+    text-align: center;
+    padding: 5px
+}
+
+.viterbi_td
+{
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    vertical-align: top;
+    text-align: center;
+    padding: 2px
+}
+
+
+.viterbi_tr.zebra:nth-child( even)
+{
+    background-color: #e6fee6
+}
+/* pale green 95% shading */
+
+.visible {visibility: visible}
+
+.hidden {visibility: hidden}
+
