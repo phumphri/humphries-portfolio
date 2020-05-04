@@ -34,36 +34,54 @@ app = Flask(__name__)
 
 
 # INF554:  Information Visualization
-@app.route('/inf554', methods=['GET'])
-def inf554():
+@app.route('/inf554/<assignment>', methods=['GET'])
+def inf554(assignment):
 
-    return render_template('inf554.html', 
-        project_name="Information Visualization", 
-        current_time=datetime.datetime.utcnow()), 200
+    print(' ')
+    print('===== debug =====')
+    print('New /inf554/<assignment> was called.')
+    print(' ')
+
+    if assignment == 'index':
+        return render_template('inf554/index.html', 
+            project_name="Information Visualization", 
+            current_time=datetime.datetime.utcnow()), 200
+    else:
+        raise  NotImplemented()
 
 # INF552:  Introduction to Machine Learning
-@app.route('/inf552', methods=['GET'])
-def inf552():
+@app.route('/inf552/<assignment>', methods=['GET'])
+def inf552(assignment):
 
-    return render_template('inf552.html', 
-        project_name="Machine Learning", 
-        current_time=datetime.datetime.utcnow()), 200
+    if assignment == 'index':
+        return render_template('inf552/index.html', 
+            project_name="Machine Learning", 
+            current_time=datetime.datetime.utcnow()), 200
+    else:
+        raise  NotImplemented()
 
 # INF553:  Foundations and Applications of Data Mining
-@app.route('/inf553', methods=['GET'])
-def inf553():
+@app.route('/inf553/<assignment>', methods=['GET'])
+def inf553(assignment):
 
-    return render_template('inf553.html', 
-        project_name="Data Mining", 
-        current_time=datetime.datetime.utcnow()), 200
+    if assignment == 'index':
+        return render_template('inf553/index.html', 
+            project_name="Data Mining", 
+            current_time=datetime.datetime.utcnow()), 200
+    else:
+        raise  NotImplemented()
 
 # INF555:  Interaction Design and Usability Testing
-@app.route('/inf555', methods=['GET'])
-def inf555():
+@app.route('/inf555/<assignment>', methods=['GET'])
+def inf555(assignment):
 
-    return render_template('inf555.html', 
-        project_name="Design and Testing", 
-        current_time=datetime.datetime.utcnow()), 200
+    if assignment == 'index':
+        return render_template('inf555/index.html', 
+            project_name="Design and Testing", 
+            current_time=datetime.datetime.utcnow()), 200
+    else:
+        raise  NotImplemented()
+
 
 # quickstart
 @app.route('/quickstart', methods=['GET'])
