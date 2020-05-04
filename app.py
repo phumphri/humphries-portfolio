@@ -82,7 +82,6 @@ def sae():
 @app.route('/sae_2', methods=['GET'])
 def sae_2():
 
-
     return render_template('sae_2.html'), 200
     
 # Index page.

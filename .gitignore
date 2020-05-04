@@ -1,5 +1,6 @@
 # Context for Visual Studio Code
 .vscode/
+__pycache__
 
 # Git Ignore
 .gitignore
