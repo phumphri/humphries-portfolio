@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block title %}{{ project_name|title }}{% endblock %}
+
+
+{% block head %}
+{{ super() }}
+
+    <!-- Metadata -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Assignment_7, humphries">
+    <meta name="Author" content="Patrick Humphries">
+    <meta http-equiv="charset" content="utf-8">
+    <meta http-equiv="content-type" content="text/html">
+
+    <!-- Data Driven Documents -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Application Scripts -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_3/sae_hidden_or_visible.js') }}"></script>
+    
+
+    <!-- U.S.C. Decorations -->
+    <link rel="stylesheet" type="text/css" href="https://humphries-inf554.s3-us-west-1.amazonaws.com/viterbi_3.css" />
+    <link rel="shortcut icon" href="https://www.usc.edu/favicon.ico" />
+    <link rel="favicon" href="https://www.usc.edu/favicon.ico" />
+
+    {% endblock %}
+
+    {% block body %}
+    {{ super() }}
+
+    <div class="container-fluid">
+
+        <div class="row cardinal_background">
+            <div class="col-sm-3 cardinal project_name">
+                <img src="https://vsoeapp1.vsoe.usc.edu/images/USC-Bar-cardinal.gif"><br />
+            </div>
+            <div class="col-sm-6 cardinal_background project_name">Visualization Wheel</div>
+            <div class="col-sm-3 cardinal_background bootcamp_name">
+                <p class="gold">Patrick Humphries, M.B.A.<br />
+                    INF 554: Information Visualization<br />
+                    Fall 2019
+                </p>
+            </div>
+        </div>
+
+        <!-- Hide or unhide rows. -->
+        <div id="navigation" class=row>
+            <div class="btn-group btn-group-sm">
+                <button type="button" class="btn btn-primary cardinal_background gold_color" onclick="sae_hidden_or_visible('assignment_row')">
+                    Assignment
+                </button>
+                <button type="button" class="btn btn-primary cardinal_background gold_color" onclick="sae_hidden_or_visible('infographic_1_row')">
+                    Infographic 1
+                </button>
+                <button type="button" class="btn btn-primary cardinal_background gold_color" onclick="sae_hidden_or_visible('infographic_2_row')">
+                    Infographic 2
+                </button>
+                <button type="button" class="btn btn-primary cardinal_background gold_color" onclick="sae_hidden_or_visible('all')">
+                    All
+                </button>
+            </div>
+        </div>
+
+        <!-- This row displays assignment, approach, provenance, and links to code. -->
+        <div id="assignment_row" class="row">
+
+            <div class="col-sm-3">
+                <fieldset>
+                    <legend>Assignment</legend>
+                    <p><b>Assignment 3: Critiquing visualizations in news media.</b></p>
+                    <p>Find 2 different infographics on the same subject and compare them using the visualization wheel.</p>
+                    <p>What do they do well, what do they do poorly?</p>
+                    <p>Suggest improvements for the things they do poorly.</p>
+                    <p>Document in HTML</p>
+                </fieldset>
+            </div>
+
+            <div class="col-sm-3">
+                <fieldset>
+                    <legend>Approach</legend>
+                    <p>Visualization Wheel was created as a SVG+XML file with Inkscape.</p>
+                    <p>This file was copied and and modified for each infographic</p>
+                </fieldset>
+            </div>
+
+            <div class="col-sm-3">
+                <fieldset>
+                    <legend>Provenance</legend>
+
+                    <p><a href="https://www.nytimes.com/interactive/2019/08/02/us/politics/2020-democratic-fundraising.html" target="_blank">Detailed Maps of the Donors Powering the 2020 Democratic Campaigns</p>
+
+                    <p><a href="https://www.forbes.com/sites/giacomotognini/2019/08/05/here-are-the-democratic-presidential-candidates-with-the-most-donations-from-billionaires/#2ba672c04c15" target="_blank">Her Are The Democratic Presidential Candidates
+                            With The Most Donations From Billionaires</a></p>
+
+                </fieldset>
+            </div>
+
+            <div class="col-sm-3">
+                <fieldset>
+
+                    <legend>GitHub</legend>
+                    <p><a target="_blank" href="https://github.com/phumphri/INF554/tree/master/Assignment%2003">Code and Data</a></p>
+
+                </fieldset>
+            </div>
+
+        </div>
+
+        <div id="infographic_1_row_display" class="row">
+
+            <div class="col-sm-12">
+                <fieldset class="padding_5px">
+                    <legend>New York Times</legend>
+                    <img class="img-responsive" src="{{ url_for('static', filename='img/inf554/assignment_3/NYTimes.PNG') }}" alt="NYTimes.PNG">
+                </fieldset>
+            </div>
+
+        </div>
+
+        <div id="infographic_1_row_analysis" class="row">
+
+            <div class="col-sm-6">
+                <fieldset class="padding_5px">
+                    <legend>Visualization Wheel</legend>
+                    <img class="img-responsive" src="{{ url_for('static', filename='img/inf554/assignment_3/infographic_1.svg') }}" alt="infographic_1.svg">
+                </fieldset>
+            </div>
+
+
+            <div class="col-sm-6">
+
+                <fieldset class="padding_5px">
+                    <legend>Abstraction-Figuration</legend>
+                    <p>Using a chorograph makes this visualization figurative. Also, drilling down on the chorogaph to
+                        counties makes this even more figurative.
+                        The goal of the visualization is to show for each candidate where the individual donors are located,
+                        so figuration is important.
+                    </p>
+                    <p>Score 2-4</p>
+                </fieldset>
+
+                <fieldset class="padding_5px">
+                    <legend>Functionality-Decoration</legend>
+                    <p>The use of head-shots of the candidates is decorative. They do not interfere with the comprehension.
+                        This visualization is highly functional. Visually show the distribution of data as well as allowing
+                        for drilling contributes to its functionality. </p>
+                    <p>Score 6-1</p>
+                </fieldset>
+
+                <fieldset class="padding_5px">
+                    <legend>Density-Lightness</legend>
+                    <p>This is a relative dense graph. Finding the number of donors per candidate results in a tremendous amount of information.</p>
+                    <p>Score 6-1</p>
+                </fieldset>
+
+                <fieldset class="padding_5px">
+                    <legend>Multidimensionality-Unidimentionality</legend>
+                    <p>This visualization is as multidimensional as unidimentional.
+                        Being able to drill down to the county level allows the user to explore the data.
+                        However, the data is only the number of donors per candidate. It does not reveal
+                        other dimensions such as the biggest donor, finantial status, or social association.
+                    </p>
+                    <p>Score 2-2</p>
+
+                </fieldset>
+
+                <fieldset class="padding_5px">
+                    <legend>Originality-Familiarity</legend>
+                    <p>This is a choropleth drilling down to a geospatial representation of counties.
+                        These are maps that are familiar to anyone who is familiar with the geography of the United States.
+                    </p>
+                    <p>Score 1-6</p>
+                </fieldset>
+
+                <fieldset class="padding_5px">
+                    <legend>Novelty-Redundancy</legend>
+                    <p>This visualization is neither novel nor redundant.
+                        It is not redundant, because at the most granular level it only shows the data for a single county.
+                        It is not novel, because it only shows donors per county per candidate.
+                    </p>
+                    <p>Score 2-2</p>
+                </fieldset>
+
+            </div>
+
+        </div>
+
+        <div id="infographic_2_row_display" class="row">
+
+            <div class="col-sm-12">
+                <fieldset class="padding_5px">
+                    <legend>Forbes</legend>
+                    <img class="img-responsive" src="{{ url_for('static', filename='img/inf554/assignment_3/Forbes.PNG') }}" alt="Forbes.PNG">
+                </fieldset>
+            </div>
+
+        </div>
+
+        <div id="infographic_2_row_analysis" class="row">
+
+            <div class="col-sm-6">
+                <fieldset class="padding_5px">
+                    <legend>Visualization Wheel</legend>
+                    <img class="img-responsive" src="{{ url_for('static', filename='img/inf554/assignment_3/infographic_2.svg') }}" alt="infographic_2.svg">
+                </fieldset>
+            </div>
+
+
+            <div class="col-sm-6">
+
+                <fieldset class="padding_5px">
+                    <legend>Abstraction-Figuration</legend>
+                    <p>This visualation is highly abstract. There is no mimicry.
+                        It is just simple horizontal bar chart. </p>
+                    <p>Score 6-1</p>
+                </fieldset>
+
+                <fieldset class="padding_5px">
+                    <legend>Functionality-Decoration</legend>
+                    <p>Again, head-shots of the candidates are decorations that do not interfere with the comprehension.
+                        This strictly a functional visualization with bars and tooltips.
+                    </p>
+                    <p>Score 6-1</p>
+                </fieldset>
+
+                <fieldset class="padding_5px">
+                    <legend>Density-Lightness</legend>
+                    <p>It cannot be any lighter than this. A bar chart with aggregated number billionaire donors.
+                        This a dearth of information. No drill down to the actual donors and amounts.
+                    </p>
+                    <p>Score 1-6</p>
+                </fieldset>
+
+                <fieldset class="padding_5px">
+                    <legend>Multidimensionality-Unidimentionality</legend>
+                    <p>This is strictly a unidimential visualization.
+                        Other than tooltips on the bars, there is no other affordances to the user.
+                    </p>
+                    <p>Score 1-6</p>
+                </fieldset>
+
+                <fieldset class="padding_5px">
+                    <legend>Originality-Familiarity</legend>
+                    <p>A bar chart is highly familiar.</p>
+                    <p>Score: 1-6</p>
+                </fieldset>
+
+                <fieldset class="padding_5px">
+                    <legend>Novelty-Redundancy</legend>
+                    <p>Because this visualization is unidimentional, there is no room for novelty or redundancy.
+                        Novelty is missing becuase it only shows the number of donors per candidate.
+                        It might be helpful to show the amounts of donationations, the biggest donors, and maybe the industry which is attempting to buy influence.
+                    </p>
+                    <p>Redundancy is missing because there is only a bar chart.</p>
+                    <p>Score 1-1</p>
+                </fieldset>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endblock %}
