@@ -184,15 +184,6 @@ function build_assignment_row() {
         provenance_fieldset
             .append("p")
             .append("a")
-            .attr("href", "https://github.com/phumphri/humphries-portfolio/tree/master/static/img/inf554/assignment_6")
-            .attr("fill", "black")
-            .attr("target", "_blank")
-            .append("text")
-            .text("images")
-    
-        provenance_fieldset
-            .append("p")
-            .append("a")
             .attr("href", "https://github.com/phumphri/humphries-portfolio/tree/master/static/json/inf554/assignment_8")
             .attr("fill", "black")
             .attr("target", "_blank")
