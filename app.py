@@ -65,6 +65,10 @@ def inf554(assignment):
         return render_template('inf554/assignment_7.html', 
             project_name="Preatttentive Features", 
             current_time=datetime.datetime.utcnow()), 200
+    elif assignment == 'assignment_8':
+        return render_template('inf554/assignment_8.html', 
+            project_name="Colors and Color Vision", 
+            current_time=datetime.datetime.utcnow()), 200
     else:
         raise  NotImplemented()
 
