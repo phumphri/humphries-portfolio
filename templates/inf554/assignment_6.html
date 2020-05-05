@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block title %}{{ project_name|title }}{% endblock %}
+
+
+{% block head %}
+{{ super() }}
+
+    <!-- Metadata -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Assignment_6, humphries">
+    <meta name="Author" content="Patrick Humphries">
+    <meta http-equiv="charset" content="utf-8">
+    <meta http-equiv="content-type" content="text/html">
+
+    <!-- Data Driven Documents -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Application Scripts -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_6/main.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_6/build_heading_row.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_6/build_navigation_row.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_6/build_assignment_row.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_6/build_slopegraph_row.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_6/build_bar_graph_row.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_6/build_lollipop_chart_row.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_6/build_bubble_chart_row.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_6/update_bar_graph.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_6/update_lollipop_chart.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_6/update_bubble_chart.js') }}"></script>
+
+
+    {% endblock %}
+
+    {% block body %}
+    {{ super() }}
+
+    <!-- Call after page is loaded. -->
+    <script type="text/javascript">
+        main();
+    </script>
+
+    {% endblock %}

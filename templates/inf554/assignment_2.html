@@ -15,11 +15,6 @@
     <meta http-equiv="charset" content="utf-8">
     <meta http-equiv="content-type" content="text/html">
 
-    <!-- Personal Decorations -->
-    <link rel="stylesheet" type="text/css" href="https://humphries-inf554.s3-us-west-1.amazonaws.com/viterbi_3.css" />
-    <link rel="shortcut icon" href="https://www.usc.edu/favicon.ico" />
-    <link rel="favicon" href="https://www.usc.edu/favicon.ico" />
-
     <!-- South America Energy data from Google Sheets -->
     <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_2/total_energy_by_production_and_import.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_2/sae_hidden_or_visible_2.js') }}"></script>
@@ -38,12 +33,6 @@
 
     {% block body %}
     {{ super() }}
-
-    <!-- Call after page is loaded. -->
-    <script>
-        window.onload = draw_total_energy_by_production_and_import(1990)
-    </script>
-
 
     <div class="container-fluid">
 
@@ -248,5 +237,14 @@
         </div>
     </div>
 
+
+    <!-- Call after page is loaded. -->
+    <script>
+        window.onload = draw_total_energy_by_production_and_import(1990)
+    </script>
+    
+    
+    
+    
 
     {% endblock %}

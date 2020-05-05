@@ -26,20 +26,11 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_4/main.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/assignment_4/common_functions.js') }}"></script>
 
-    <!-- Decorations -->
-    <link rel="stylesheet" type="text/css" href="/static/css/inf554/assignment_4/assignment_4.css" />
-    <link rel="shortcut icon" href="https://www.usc.edu/favicon.ico" />
-    <link rel="favicon" href="https://www.usc.edu/favicon.ico" />
 
     {% endblock %}
 
     {% block body %}
     {{ super() }}
-
-    <!-- Call after page is loaded. -->
-    <script>
-        window.onload = main()
-    </script>
 
     <div class="container-fluid">
 
@@ -110,7 +101,8 @@
                 <fieldset>
 
                     <legend>GitHub</legend>
-                    <p><a target="_blank" href="https://github.com/phumphri/INF554/tree/master/Assignment%2004">Code and Data</a></p>
+                    <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/tree/054880379a51e43b65e3954c1d9b897044a5e5b7/static/js/inf554/assignment_4">Code</a></p>
+                    <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/tree/054880379a51e43b65e3954c1d9b897044a5e5b7/static/csv/inf554/assignment_4">Data</a></p>
 
                 </fieldset>
             </div>
@@ -162,5 +154,10 @@
         </div>
 
     </div>
+
+    <!-- Call after page is loaded. -->
+    <script type="text/javascript">
+        main();
+    </script>
 
     {% endblock %}

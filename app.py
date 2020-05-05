@@ -32,11 +32,9 @@ import datetime
 # Assigning the Flask framework.
 app = Flask(__name__)
 
-
 # INF554:  Information Visualization
 @app.route('/inf554/<assignment>', methods=['GET'])
 def inf554(assignment):
-
 
     if assignment == 'index':
         return render_template('inf554/index.html', 
@@ -58,9 +56,12 @@ def inf554(assignment):
         return render_template('inf554/assignment_4.html', 
             project_name="Rural Population", 
             current_time=datetime.datetime.utcnow()), 200
+    elif assignment == 'assignment_6':
+        return render_template('inf554/assignment_6.html', 
+            project_name="Rural Population", 
+            current_time=datetime.datetime.utcnow()), 200
     else:
         raise  NotImplemented()
-    
 
 # INF552:  Introduction to Machine Learning
 @app.route('/inf552/<assignment>', methods=['GET'])
