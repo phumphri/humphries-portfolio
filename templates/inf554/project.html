@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block title %}{{ project_name|title }}{% endblock %}
+
+{% block head %}
+{{ super() }}
+
+
+    <!-- Metro Bike Share Decorations -->
+    <script type="text/javascript" src="{{ url_for('static', filename='css/inf554/project/metro_bike_share.css') }}"></script>
+
+    <!-- Metadata -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="huang, cheng, humphries">
+    <meta name="Author" content="Patrick Humphries">
+    <meta http-equiv="charset" content="utf-8">
+    <meta http-equiv="content-type" content="text/html">
+
+    <!-- Data Driven Documents -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Module Scripts -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/project/trips.js') }}"></script>
+
+
+    {% endblock %}
+
+    {% block body %}
+    {{ super() }}
+
+
+
+    <!-- This row shows series by country over time. -->
+    <div id="trips" class="row">
+        <div class="col-sm-2">
+            <fieldset class="padding_20px">
+                <legend>Selection</legend>
+                <label>Year</label>
+                <br />
+                <div class="btn_group_vertical btn-group-sm">
+                    <input type=radio name="selected_year" onclick="update()" value="2016" checked /> 2016
+                    <br />
+                    <input type=radio name="selected_year" onclick="update()" value="2017" /> 2017
+                    <br />
+                    <input type=radio name="selected_year" onclick="update()" value="2018" /> 2018
+                    <br />
+                    <input type=radio name="selected_year" onclick="update()" value="2019" /> 2019
+                    <br />
+                    <input type=radio name="selected_year" onclick="update()" value="all" /> All
+                </div>
+                <label>Order</label>
+                <br />
+                <div class="btn_group_vertical btn-group-sm">
+                    <input type=radio name="selected_order" onclick="update()" value="Year Month" checked /> Year Month
+                    <br />
+                    <input type=radio name="selected_order" onclick="update()" value="Ascending" /> Ascending Value
+                    <br />
+                    <input type=radio name="selected_order" onclick="update()" value="Descending" /> Descending Value
+                </div>
+                <label>Filter</label>
+                <br />
+                <div class="btn_group_vertical btn-group-sm">
+                    <input type=radio name="selected_filter" onclick="update()" value="Top" /> Top 5
+                    <br />
+                    <input type=radio name="selected_filter" onclick="update()" value="Bottom" /> Bottom 5
+                    <br />
+                    <input type=radio name="selected_filter" onclick="update()" value="All" checked /> All
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="col-sm-8">
+            <fieldset id="bar_chart_fieldset" class="padding_5px">
+                <legend>Trips by Year, Month</legend>
+                <!-- Division containing bar chart will be placed here by function initialize(). -->
+            </fieldset>
+        </div>
+
+        <div class="col-sm-2">
+            <p><b>2016</b> The start was July 2016. It was highly received by the number of
+                riders in August of that year. The ridership attenuated with the weather.
+            </p>
+            <p><b>2017</b> Ridership increased, with October being the popular month.</p>
+            <p><b>2018</b> August returns as the popular month, with steady increase in trips.</p>
+        </div>
+
+    </div>
+
+
+    <!-- Call after page is loaded. -->
+    <script type="text/javascript">
+        initialize();
+    </script>
+
+    {% endblock %}
