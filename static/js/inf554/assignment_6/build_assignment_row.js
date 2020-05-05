@@ -110,17 +110,59 @@ function build_assignment_row() {
     github_fieldset
         .append("legend")
         .text("GitHub")
-
+        
     github_fieldset
+        .append("p")
         .append("a")
-        .attr("href", "https://github.com/INF554/a6-phumphri.git")
+        .attr("href", "https://github.com/phumphri/humphries-portfolio/blob/master/templates/inf554/assignment_6.html")
         .attr("fill", "black")
         .attr("target", "_blank")
         .append("text")
-        .text("Assignment 6")
+        .text("html")
 
+    github_fieldset
+        .append("p")
+        .append("a")
+        .attr("href", "https://github.com/phumphri/humphries-portfolio/tree/master/static/js/inf554/assignment_6")
+        .attr("fill", "black")
+        .attr("target", "_blank")
+        .append("text")
+        .text("javascript")
 
+    github_fieldset
+        .append("p")
+        .append("a")
+        .attr("href", "https://github.com/phumphri/humphries-portfolio/tree/master/static/img/inf554/assignment_6")
+        .attr("fill", "black")
+        .attr("target", "_blank")
+        .append("text")
+        .text("images")
 
+    github_fieldset
+        .append("p")
+        .append("a")
+        .attr("href", "https://github.com/phumphri/humphries-portfolio/tree/master/static/csv/inf554/assignment_6")
+        .attr("fill", "black")
+        .attr("target", "_blank")
+        .append("text")
+        .text("csv")
 
+    github_fieldset
+        .append("p")
+        .append("a")
+        .attr("href", "https://github.com/phumphri/humphries-portfolio/tree/master/static/json/inf554/assignment_6")
+        .attr("fill", "black")
+        .attr("target", "_blank")
+        .append("text")
+        .text("json")
+
+    github_fieldset
+        .append("p")
+        .append("a")
+        .attr("href", "https://github.com/phumphri/humphries-portfolio/tree/master/static/md/inf554/assignment_6")
+        .attr("fill", "black")
+        .attr("target", "_blank")
+        .append("text")
+        .text("md")
 
 }
