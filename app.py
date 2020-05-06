@@ -32,6 +32,7 @@ import datetime
 # Assigning the Flask framework.
 app = Flask(__name__)
 
+
 # INF554:  Information Visualization
 @app.route('/inf554/<assignment>', methods=['GET'])
 def inf554(assignment):
