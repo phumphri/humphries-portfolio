@@ -111,7 +111,8 @@ ALTER PROCEDURE metrobike.copy_stations_and_regions_to_csv() OWNER TO postgres;
 
 CREATE PROCEDURE metrobike.copy_stations_by_year_month()
     LANGUAGE sql
-    AS $$COPY (SELECT metrobike.stations_by_year_month()) TO 'C:\Users\Patrick\OneDrive\_INF554\a5-huff-n-puff\project_01\public\stations_by_year_months.json'$$;
+    AS $$COPY (SELECT metrobike.stations_by_year_month()) 
+    TO 'C:\Users\Patrick\OneDrive\_INF554\a5-huff-n-puff\project_01\public\stations_by_year_months.json'$$;
 
 
 ALTER PROCEDURE metrobike.copy_stations_by_year_month() OWNER TO postgres;
@@ -123,7 +124,8 @@ ALTER PROCEDURE metrobike.copy_stations_by_year_month() OWNER TO postgres;
 
 CREATE PROCEDURE metrobike.copy_stations_by_year_month_to_json()
     LANGUAGE sql
-    AS $$COPY (SELECT metrobike.stations_by_year_month_to_json()) TO 'C:\Users\Patrick\OneDrive\_INF554\a5-huff-n-puff\project_01\public\stations_by_year_months.json'$$;
+    AS $$COPY (SELECT metrobike.stations_by_year_month_to_json()) 
+    TO 'C:\Users\Patrick\OneDrive\_INF554\a5-huff-n-puff\project_01\public\stations_by_year_months.json'$$;
 
 
 ALTER PROCEDURE metrobike.copy_stations_by_year_month_to_json() OWNER TO postgres;
@@ -179,7 +181,8 @@ ALTER PROCEDURE metrobike.copy_trips_by_year_month_to_csv() OWNER TO postgres;
 
 CREATE PROCEDURE metrobike.copy_trips_by_year_month_to_json()
     LANGUAGE sql
-    AS $$COPY (SELECT metrobike.trips_by_year_month_to_json()) TO 'C:\Users\Patrick\OneDrive\_INF554\a5-huff-n-puff\project_01\public\trips_by_year_months.json'$$;
+    AS $$COPY (SELECT metrobike.trips_by_year_month_to_json()) 
+    TO 'C:\Users\Patrick\OneDrive\_INF554\a5-huff-n-puff\project_01\public\trips_by_year_months.json'$$;
 
 
 ALTER PROCEDURE metrobike.copy_trips_by_year_month_to_json() OWNER TO postgres;
@@ -400,7 +403,8 @@ CREATE VIEW metrobike.trips_by_season AS
                    FROM ( SELECT ((date_part('hour'::text, trips.start_time))::integer + 1) AS hour,
                             1 AS trip
                            FROM metrobike.trips
-                          WHERE (((date_part('month'::text, trips.start_time))::integer >= 5) AND ((date_part('month'::text, trips.start_time))::integer <= 11))) a
+                          WHERE (((date_part('month'::text, trips.start_time))::integer >= 5) 
+                          AND ((date_part('month'::text, trips.start_time))::integer <= 11))) a
                   GROUP BY a.hour) b
         ), winter_months AS (
          SELECT b.hour,
@@ -410,7 +414,8 @@ CREATE VIEW metrobike.trips_by_season AS
                    FROM ( SELECT ((date_part('hour'::text, trips.start_time))::integer + 1) AS hour,
                             1 AS trip
                            FROM metrobike.trips
-                          WHERE (((date_part('month'::text, trips.start_time))::integer < 5) OR ((date_part('month'::text, trips.start_time))::integer > 11))) a
+                          WHERE (((date_part('month'::text, trips.start_time))::integer < 5) 
+                          OR ((date_part('month'::text, trips.start_time))::integer > 11))) a
                   GROUP BY a.hour) b
         )
  SELECT summer_months.hour,
@@ -555,12 +560,17 @@ CREATE VIEW metrobike.trips_rollup_year_month_day_hour_dow AS
             WHEN ((a.year = 2019) AND (a.month = 11) AND (a.day = 11)) THEN 1
             WHEN ((a.year = 2019) AND (a.month = 11) AND (a.day = 28)) THEN 1
             WHEN ((a.year = 2019) AND (a.month = 11) AND (a.day = 25)) THEN 1
-            WHEN ((a.year > 0) AND (a.month > 0) AND (a.day > 0)) THEN ((date_part('dow'::text, ((((((a.year || '-'::text) || a.month) || '-'::text) || a.day) || ' 00:00:00'::text))::date) + (1)::double precision))::integer
+            WHEN ((a.year > 0) AND (a.month > 0) AND (a.day > 0)) 
+            THEN ((date_part('dow'::text, ((((((a.year || '-'::text) || a.month) || '-'::text) || a.day) 
+                || ' 00:00:00'::text))::date) + (1)::double precision))::integer
             ELSE 0
         END AS day_of_week,
     COALESCE(b.event, ' '::text) AS event_of_day
    FROM (metrobike.trips_rollup_year_month_day_hour a
-     LEFT JOIN metrobike.events b ON (((a.year = b.year) AND (a.month = b.month) AND (a.day = b.day) AND (a.hour = b.hour))));
+     LEFT JOIN metrobike.events b ON (((a.year = b.year) 
+     AND (a.month = b.month) 
+     AND (a.day = b.day) 
+     AND (a.hour = b.hour))));
 
 
 ALTER TABLE metrobike.trips_rollup_year_month_day_hour_dow OWNER TO postgres;
