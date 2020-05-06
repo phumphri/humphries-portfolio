@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block title %}{{ project_name|title }}{% endblock %}
+
+{% block head %}
+{{ super() }}
+
+
+    <!-- Metro Bike Share Decorations -->
+    <script type="text/javascript" src="{{ url_for('static', filename='css/inf554/project_2/metro_bike_share.css') }}"></script>
+
+    <!-- Metadata -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="huang, cheng, humphries">
+    <meta name="Author" content="Patrick Humphries">
+    <meta http-equiv="charset" content="utf-8">
+    <meta http-equiv="content-type" content="text/html">
+
+    <!-- Data Driven Documents -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Module Scripts -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/inf554/project_2/main.js') }}"></script>
+
+
+{% endblock %}
+
+{% block body %}
+{{ super() }}
+
+    <div id="trips" class="row">
+
+        <div id="instructions" class="col-sm-2" style="padding:0em 2em 2em">
+            <fileset class="padding_5px">
+                <legend>Navigate</legend>
+                <p class="text-left">Drill down by clicking on a bar.  The lowest level is by hour for a year, month, and  day.</p>
+                <p class="text-left">Rollup by clicking on the background.  The highest level is total trips.</p>
+                <legend>Verify</legend>
+                <p class="text-left">Rollup to the highest level to see if the claim of 700,000+ trips is true.</p>
+                <legend>Explore</legend>
+                <p class="text-left">Navigate through the data and discover trends and patterns.</p>
+                <legend>Event</legend>
+                <p id="event_of_day" class="text-left">Bummer</p>
+            </fileset>
+        </div>
+
+        <div id="visualization" class="col-sm-8" style="padding:0em 2em 2em">
+            <fileset>
+                <legend>Drill Down:  Click Bar | Rollup:  Click Background</legend>
+            </fileset>
+        </div>
+
+        <div class="col-sm-2" style="padding:0em 2em 2em">
+            <fieldset>
+                <legend>GitHub</legend>
+                <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/blob/master/templates/inf554/project_2.html">html</a></p>
+                <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/blob/master/static/js/inf554/project_2">javascript</a></p>
+                <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/blob/master/static/css/inf554/project">css</a></p>
+                <p><a target="_blank" href="https://github.com/phumphri/humphries-portfolio/blob/master/static/json/inf554/project">json</a></p>
+            </fieldset>
+        </div>
+
+
+    </div>
+
+    <!-- Call after page is loaded. -->
+    <script type="text/javascript">
+        main();
+    </script>
+
+    {% endblock %}

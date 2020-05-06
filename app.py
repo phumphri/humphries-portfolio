@@ -32,7 +32,6 @@ import datetime
 # Assigning the Flask framework.
 app = Flask(__name__)
 
-
 # INF554:  Information Visualization
 @app.route('/inf554/<assignment>', methods=['GET'])
 def inf554(assignment):
@@ -76,6 +75,10 @@ def inf554(assignment):
     elif assignment == 'project':
         return render_template('inf554/project.html', 
             project_name="Metro Bike Share", 
+            current_time=datetime.datetime.utcnow()), 200
+    elif assignment == 'project_2':
+        return render_template('inf554/project_2.html', 
+            project_name="Metro Bike Share 2", 
             current_time=datetime.datetime.utcnow()), 200
     else:
         raise  NotImplemented()
